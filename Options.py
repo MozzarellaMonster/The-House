@@ -37,7 +37,7 @@ class options:
 
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.\n")
-            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.\n")
+            print("Inside, you find a single key with a decorative ellipses on it. You pocket it.\n")
             options.inventory.append("Attic Key")
             
         elif choice.lower() == "b":
@@ -60,6 +60,7 @@ class options:
         print("C. Go through the right door")
         print("D. Go up the stairs")
         print("E. Go back through the door.")
+        choice = input()
 
 
         if choice.lower() == "a":
@@ -77,6 +78,9 @@ class options:
         elif choice.lower() == "e":
             print("You turn around.")
             options.entryway()
+        else:
+            print("Sorry, that is not a valid choice.")
+            options.foyer()
 
 
     def left_door():
