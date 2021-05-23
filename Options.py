@@ -3,20 +3,24 @@ class options:
     endings = []
 
 
-
+    def endgame(choice):
+        if choice == "porch":
+            print("Guess the paper sent out the wrong person for the story, huh?")
+            print("GAME OVER: Ending 1")
+            options.endings.append("Ending 1: Coward")
 
     def porch():
         choice = input("Do you dare to enter the house? Y/N: ")
 
         if choice.lower() == 'y':
             print("You grip the doorknob again and with a shaky breath, open the door...")
-            entryway()
+            options.entryway()
         elif choice.lower() == 'n':
             print("You turn around and head back to your car, head lowered in shame.")
-            endgame("porch")
+            options.endgame("porch")
         else:
             print("Sorry that is not a valid option. Please try again.")
-            porch()
+            options.porch()
 
     def entryway():
         print("A dimly lit entryway greets you, sunlight managing to make it in through\n")
@@ -34,7 +38,7 @@ class options:
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.\n")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.\n")
-            inventory.append("Attic Key")
+            options.inventory.append("Attic Key")
             
         elif choice.lower() == "b":
             print("You investigate the painting. It is a self-portait of a very stern-looking man with\n")
@@ -42,7 +46,7 @@ class options:
             print("about it.\n")
 
         print("You go through the door and make your way further inside...\n\n")
-            foyer()
+        options.foyer()
             
 
 
@@ -60,19 +64,19 @@ class options:
 
         if choice.lower() == "a":
             print("You have chosen to go through the left door. It creaks open...")
-            left_door()
+            options.left_door()
         elif choice.lower() == "b":
             print("You have chosen to go forward into the hallway. You step forward...")
-            hallway()
+            options.hallway()
         elif choice.lower() == "c":
             print("You have chosen to go through the right door. You turn the knob...")
-            right_door()
+            options.right_door()
         elif choice.lower() == "d":
             print("You have chosen to go up the stairs. You grip the banister and take the first step...")
-            stairs()
+            options.stairs()
         elif choice.lower() == "e":
             print("You turn around.")
-            entryway()
+            options.entryway()
 
 
     def left_door():
@@ -88,11 +92,6 @@ class options:
     def stairs():
         pass
     
-    def endgame(choice):
-        if choice == "porch":
-            print("Guess the paper sent out the wrong person for the story, huh?")
-            print("GAME OVER: Ending 1")
-            endings.append("Ending 1: Coward")
 
 
     
