@@ -24,38 +24,38 @@ class options:
             options.porch()
 
     def entryway():
-        print("A dimly lit entryway greets you, sunlight managing to make it in through\n")
-        print("the caked-on grime on the large stained glass windows above the front door.\n")
-        print("There's an expensive-looking rug running along the floor and a surprising lack\n")
-        print("of vandalism, despite the door not being locked. There is a small table on one side\n")
-        print("and a painting on the other. There is also one door leading further into the house.\n")
+        print("A dimly lit entryway greets you, sunlight managing to make it in through")
+        print("the caked-on grime on the large stained glass windows above the front door.")
+        print("There's an expensive-looking rug running along the floor and a surprising lack")
+        print("of vandalism, despite the door not being locked. There is a small table on one side")
+        print("and a painting on the other. There is also one door leading further into the house.")
         print("As far as you can tell, there are three options:\n")
         
-        print("A. Investigate the table.\n")
-        print("B. Investigate the painting.\n")
-        print("C. Go through the door.\n")
-        choice = input("What would you like to do?: ")
+        print("A. Investigate the table.")
+        print("B. Investigate the painting.")
+        print("C. Go through the door.")
+        choice = input("\nWhat would you like to do?: ")
 
         if choice.lower() == "a":
-            print("You investigate the table and notice it has only one drawer. You open it.\n")
-            print("Inside, you find a single key with a decorative ellipses on it. You pocket it.\n")
+            print("You investigate the table and notice it has only one drawer. You open it.")
+            print("Inside, you find a single key with a decorative ellipses on it. You pocket it.")
             options.inventory.append("Attic Key")
             
         elif choice.lower() == "b":
-            print("You investigate the painting. It is a self-portait of a very stern-looking man with\n")
-            print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting\n")
-            print("about it.\n")
+            print("You investigate the painting. It is a self-portait of a very stern-looking man with")
+            print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
+            print("about it.")
 
-        print("You go through the door and make your way further inside...\n\n")
+        print("You go through the door and make your way further inside...\n")
         options.foyer()
             
 
 
     
     def foyer():
-        print("On the other side of the door lies a dimly lit foyer, stairs go up on the right, to the left there is a\n")
-        print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.\n")
-        print("Which area would you like to explore?")
+        print("On the other side of the door lies a dimly lit foyer, stairs go up on the right, to the left there is a")
+        print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
+        print("\nWhich area would you like to explore?")
         print("A. Go through the left door")
         print("B. Go forward into the hallway")
         print("C. Go through the right door")
