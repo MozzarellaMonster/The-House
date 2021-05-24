@@ -6,20 +6,21 @@ class options:
     def endgame(choice):
         if choice == "porch":
             print("Guess the paper sent out the wrong person for the story, huh?")
-            print("GAME OVER: Ending 1")
+            print("GAME OVER: Ending 1: Coward")
             options.endings.append("Ending 1: Coward")
 
     def porch():
         choice = input("Do you dare to enter the house? Y/N: ")
 
         if choice.lower() == 'y':
-            print("You grip the doorknob again and with a shaky breath, open the door...")
+            print("\nYou grip the doorknob again and with a shaky breath, open the door...")
             options.entryway()
         elif choice.lower() == 'n':
-            print("You turn around and head back to your car, head lowered in shame.")
+            print("\nYou turn around and head back to your car, head lowered in")
+            print("shame.")
             options.endgame("porch")
         else:
-            print("Sorry that is not a valid option. Please try again.")
+            print("\nSorry that is not a valid option. Please try again.")
             options.porch()
 
     def entryway():
