@@ -29,8 +29,10 @@ class options:
         print("There's an expensive-looking rug running along the floor and a surprising lack")
         print("of vandalism, despite the door not being locked. There is a small table on one side")
         print("and a painting on the other. There is also one door leading further into the house.")
+        options.entryway_2()
+    
+    def entryway_2():
         print("As far as you can tell, there are three options:\n")
-        
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
@@ -38,7 +40,7 @@ class options:
 
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
-            print("Inside, you find a single key with a decorative ellipses on it. You pocket it.")
+            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
             options.inventory.append("Attic Key")
             
         elif choice.lower() == "b":
@@ -46,8 +48,14 @@ class options:
             print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
             print("about it.")
 
-        print("You go through the door and make your way further inside...\n")
-        options.foyer()
+        elif choice.lower() == "c":
+            print("You go through the door and make your way further inside...\n")
+            options.foyer()
+        
+        else:
+            print("Sorry, that is not a valid option.")
+            print("Please try again.")
+            options.entryway_2()
             
 
 
