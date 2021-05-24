@@ -86,7 +86,7 @@ class options:
             options.stairs()
         elif choice.lower() == "e":
             print("You turn around.")
-            options.entryway()
+            options.entryway_2()
         else:
             print("Sorry, that is not a valid choice.")
             options.foyer()
@@ -97,7 +97,19 @@ class options:
         print("There are several things about this room that intrigue you.")
 
     def right_door():
-        pass
+        print("The right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
+        print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
+        choice = input("You could either check out the desk or the globe, which do you choose?\n A: The desk\n B: The globe stand")
+        
+        if choice.lower() == "a":
+            print("The desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
+            print("has a locked box with the emblem of a crane on it.")
+            print("What do you want to do?")
+        elif choice.lower() == "b":
+            print("You were right when you guessed the globe had a hidden compartment within it.")
+            print("You opened it up to find a contraption made of several gears tucked tightly inside.")
+            print("There appears to be a gear missing.")
+      
     
     def hallway():
         pass
