@@ -38,25 +38,25 @@ class options:
 
 
     def entryway_2():
+        
         print("As far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
-        choice = input("\nWhat would you like to do?: ")
-
+        choice = input("\nWhat would you like to do?: ")        
+        
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
-            print("You turn back to the room.")
             options.inventory.append("Attic Key")
-            options.entryway_2()
+            options.entryway_3("a")
             
         elif choice.lower() == "b":
             print("You investigate the painting. It is a self-portait of a very stern-looking man with")
             print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
             print("about it.")
             print("You turn back to the room.")
-            options.entryway_2()
+            options.entryway_3("b")
 
         elif choice.lower() == "c":
             print("You go through the door and make your way further inside...\n")
@@ -66,6 +66,35 @@ class options:
             options.try_again()
             options.entryway_2()
     
+    def entryway_3(used = None):
+        print("You turn back to the room.")
+        if used == "a":
+            print("There are now two options left, you can either look at the painting or")
+            print("you can go through the door, which would you like to do?")
+            print("1. Look at the painting")
+            print("2. Go through the door")
+            choice_2 = input()
+        elif used == "b":
+            print("There are now two options left, you can either investigate the table or")
+            print("you can go through the door, which would you like to do?")
+            print("A. Investigate the table")
+            print("B. Go through the door")
+            choice_2 = input()
+        else:
+            options.try_again(used)
+            
+        if choice_2 == "1":
+            print("You investigate the painting. It is a self-portait of a very stern-looking man with")
+            print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
+            print("about it.")
+        elif choice_2 == "A":
+            print("You investigate the table and notice it has only one drawer. You open it.")
+            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
+            options.inventory.append("Attic Key")
+
+        print("You go through the door and make your way further inside...\n")
+        options.foyer()
+
 
 
     def foyer():
@@ -92,8 +121,8 @@ class options:
             print("You have chosen to go up the stairs. You grip the banister and take the first step...")
             options.stairs()
         elif choice.lower() == "e":
-            print("You turn around.")
-            options.entryway_2()
+            print("You try to go back through the door, but it is locked. You turn back around")
+            options.foyer()
         else:
             options.try_again()
             options.foyer()
@@ -114,7 +143,7 @@ class options:
             print("The desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
             print("What do you want to do?")
-            
+
 
         elif choice.lower() == "b":
             print("You were right when you guessed the globe had a hidden compartment within it.")
@@ -134,4 +163,4 @@ class options:
 
 
     def try_again():
-        print("Sorry, that is not a valid option. Please try again.")
+        print("Sorry, that is not a valid option. Please try again.\n")
