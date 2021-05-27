@@ -38,7 +38,6 @@ class options:
 
 
     def entryway_2():
-        
         print("As far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
@@ -49,6 +48,7 @@ class options:
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
             options.inventory.append("Attic Key")
+            print("You turn back to the room.")
             options.entryway_3("a")
             
         elif choice.lower() == "b":
@@ -66,7 +66,10 @@ class options:
             options.try_again()
             options.entryway_2()
     
+
+
     def entryway_3(used = None):
+        done = False
         print("You turn back to the room.")
         if used == "a":
             print("There are now two options left, you can either look at the painting or")
@@ -80,20 +83,24 @@ class options:
             print("A. Investigate the table")
             print("B. Go through the door")
             choice_2 = input()
-        else:
-            options.try_again(used)
             
         if choice_2 == "1":
             print("You investigate the painting. It is a self-portait of a very stern-looking man with")
             print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
             print("about it.")
-        elif choice_2 == "A":
+            done = True
+        elif choice_2.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
             options.inventory.append("Attic Key")
+            done = True
 
-        print("You go through the door and make your way further inside...\n")
-        options.foyer()
+        if choice_2 == "2" or choice_2.lower() == "b" or done:
+            print("You go through the door and make your way further inside...\n")
+            options.foyer()
+        else:
+            options.try_again()
+            options.entryway_3(used)
 
 
 
