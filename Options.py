@@ -20,7 +20,7 @@ class options:
             print("shame.")
             options.endgame("porch")
         else:
-            print("\nSorry that is not a valid option. Please try again.")
+            options.try_again()
             options.porch()
 
     def entryway():
@@ -42,19 +42,20 @@ class options:
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
             options.inventory.append("Attic Key")
+            options.entryway_2()
             
         elif choice.lower() == "b":
             print("You investigate the painting. It is a self-portait of a very stern-looking man with")
             print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
             print("about it.")
+            options.entryway_2()
 
         elif choice.lower() == "c":
             print("You go through the door and make your way further inside...\n")
             options.foyer()
         
         else:
-            print("Sorry, that is not a valid option.")
-            print("Please try again.")
+            options.try_again()
             options.entryway_2()
             
 
@@ -88,7 +89,7 @@ class options:
             print("You turn around.")
             options.entryway_2()
         else:
-            print("Sorry, that is not a valid choice.")
+            options.try_again()
             options.foyer()
 
 
@@ -105,10 +106,12 @@ class options:
             print("The desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
             print("What do you want to do?")
+
+            
         elif choice.lower() == "b":
             print("You were right when you guessed the globe had a hidden compartment within it.")
             print("You opened it up to find a contraption made of several gears tucked tightly inside.")
-            print("There appears to be a gear missing.")
+            print("There appears to be a gear missing. Nothing will move without that gear.")
       
     
     def hallway():
@@ -117,7 +120,5 @@ class options:
     def stairs():
         pass
     
-
-
-    
-        
+    def try_again():
+        print("Sorry, that is not a valid option. Please try again.")
