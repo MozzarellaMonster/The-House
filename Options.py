@@ -9,6 +9,8 @@ class options:
             print("GAME OVER: Ending 1: Coward")
             options.endings.append("Ending 1: Coward")
 
+
+
     def porch():
         choice = input("Do you dare to enter the house? Y/N: ")
 
@@ -23,6 +25,8 @@ class options:
             options.try_again()
             options.porch()
 
+
+
     def entryway():
         print("A dimly lit entryway greets you, sunlight managing to make it in through")
         print("the caked-on grime on the large stained glass windows above the front door.")
@@ -31,6 +35,8 @@ class options:
         print("and a painting on the other. There is also one door leading further into the house.")
         options.entryway_2()
     
+
+
     def entryway_2():
         print("As far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
@@ -41,6 +47,7 @@ class options:
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
+            print("You turn back to the room.")
             options.inventory.append("Attic Key")
             options.entryway_2()
             
@@ -48,6 +55,7 @@ class options:
             print("You investigate the painting. It is a self-portait of a very stern-looking man with")
             print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
             print("about it.")
+            print("You turn back to the room.")
             options.entryway_2()
 
         elif choice.lower() == "c":
@@ -57,10 +65,9 @@ class options:
         else:
             options.try_again()
             options.entryway_2()
-            
-
-
     
+
+
     def foyer():
         print("On the other side of the door lies a dimly lit foyer, stairs go up on the right, to the left there is a")
         print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
@@ -71,7 +78,6 @@ class options:
         print("D. Go up the stairs")
         print("E. Go back through the door.")
         choice = input()
-
 
         if choice.lower() == "a":
             print("You have chosen to go through the left door. It creaks open...")
@@ -97,6 +103,8 @@ class options:
         print("The left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.\n")
         print("There are several things about this room that intrigue you.")
 
+
+
     def right_door():
         print("The right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
         print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -106,19 +114,24 @@ class options:
             print("The desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
             print("What do you want to do?")
-
             
+
         elif choice.lower() == "b":
             print("You were right when you guessed the globe had a hidden compartment within it.")
             print("You opened it up to find a contraption made of several gears tucked tightly inside.")
             print("There appears to be a gear missing. Nothing will move without that gear.")
       
     
+
     def hallway():
         pass
+
+
 
     def stairs():
         pass
     
+
+
     def try_again():
         print("Sorry, that is not a valid option. Please try again.")
