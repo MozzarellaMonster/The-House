@@ -136,8 +136,43 @@ class options:
 
 
     def left_door():
-        print("The left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.\n")
+        print("The left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.")
         print("There are several things about this room that intrigue you.")
+        print("One of them is the large bookshelf directly across from you filled with dusty old books.")
+        print("Another is the large, intricately decorated fireplace against the wall.")
+        print("The last thing of note is the display case underneath the window.")
+        print("\nWhich would you like to investigate?")
+        print("A. The bookshelf")
+        print("B. The fireplace")
+        print("C. The display case")
+        print("D. Leave the room")
+        choice = input()
+
+        if choice.lower() == "a":
+            print("You go to the bookshelf and look over the old tomes on the shelf.")
+            print("Aside from noticing the majority of them were mystery and thrillers, nothing really stands out about them.")
+            print("You turn back to the room.")
+            
+            
+        elif choice.lower() == "b":
+            print("You go up to the fireplace and admire the intricate carvings of grapevines on it.")
+            print("There seems to be one cluster of grapes that stands out from the rest.")
+            print("Specifically, one particular grape. You graze your hand over it and notice that it gently")
+            print("gives under the pressure of your finger. It's a button! Push it?")
+            push = input("Will you push the button, Y/N?: ")
+
+
+        elif choice.lower() == "c":
+            print("You walk up to the display case and brush away the dust collected on the glass lid.")
+            print("It's empty. Figures, maybe some looters took whatever valuable thing may have been inside?")
+            print("You look closer and notice the faint impression of a dagger in the velvet cushion of the case.")
+            print("Interesting, maybe whoever lived here before liked collecting antiques?")
+            print("You turn back to the room.")
+        
+        else:
+            options.try_again()
+            options.left_door()
+
 
 
 
