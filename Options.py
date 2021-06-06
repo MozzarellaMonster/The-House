@@ -195,7 +195,10 @@ class options:
     
 
     def hallway():
-        pass
+        print("You head down the hallway to find... nothing.")
+        print("All there is is a still-life portrait of a flower vase, nothing odd about that.")
+        print("You turn around and head back to the foyer.")
+        options.foyer()
 
 
 
