@@ -238,19 +238,31 @@ class options:
             print("You bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative fork.")
             options.kitchen_cabinet()
+        elif choice.lower() == "b":
+            print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
+            print("An awful smell hits you and close the door immediately. Don't know what else you expected, honestly.")
+            options.kitchen()
+        elif choice.lower() == "c":
+            print("You turn around and go back into the hallway.")
+            options.hallway()
+        else:
+            options.try_again()
+            options.kitchen()
             
+        
+
                 
     def kitchen_cabinet():
         pick_up = input("Do you want to pick it up? Y/N: ")
-            if pick_up.lower() == "y":
-                options.inventory.append("Silver fork")
-                return
-            elif pick_up.lower() == "n":
-                print("You decide to leave the fork alone and get back up.")
-                return
-            else:
-                options.try_again()
-                options.kitchen_cabinet()
+        if pick_up.lower() == "y":
+            options.inventory.append("Silver fork")
+            return
+        elif pick_up.lower() == "n":
+            print("You decide to leave the fork alone and get back up.")
+            return
+        else:
+            options.try_again()
+            options.kitchen_cabinet()
 
 
 
