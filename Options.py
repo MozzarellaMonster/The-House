@@ -191,14 +191,33 @@ class options:
             print("You were right when you guessed the globe had a hidden compartment within it.")
             print("You opened it up to find a contraption made of several gears tucked tightly inside.")
             print("There appears to be a gear missing. Nothing will move without that gear.")
+        
+        else:
+            options.try_again()
+            options.right_door()
       
     
 
     def hallway():
-        print("You head down the hallway to find... nothing.")
-        print("All there is is a still-life portrait of a flower vase, nothing odd about that.")
-        print("You turn around and head back to the foyer.")
-        options.foyer()
+        print("You head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
+        print("the other appears to be the basement. What would you like to do?")
+        print("A. Go into the kitchen")
+        print("B. Head down into the basement")
+        print("C. Go back into the foyer")
+        choice = input()
+
+        if choice.lower() == "a":
+            print("You head into the kitchen. It is drab, with the cabinets painted a faded yellow with white tile counters.")
+            print("The oven stood open like a gaping maw, the door having fallen off the hinges.")
+            print("The refrigerator stood about two feet away from the wall, appearing to have been pulled away from it.")
+            print("The floor is a checkered black and white and the small table has been destroyed, it looks like it was hit by a massive impact.")
+            print("At first, nothing really stands out to you, but then you notice something glinting inside a broken cabinet with no door.")
+            print("There is also the matter of opening the refrigerator, whose door is still intact and closed.")
+            print("A. Investigate the glinting object")
+            print("B. Open the refrigerator door")
+            print("C. Go back into the hallway")
+
+        
 
 
 
