@@ -233,7 +233,24 @@ class options:
         print("B. Open the refrigerator door")
         print("C. Go back into the hallway")
         choice = input()
-        
+
+        if choice.lower() == "a":
+            print("You bend down and look deeper into the broken cabinet.")
+            print("It is a silver, decorative fork.")
+            options.kitchen_cabinet()
+            
+                
+    def kitchen_cabinet():
+        pick_up = input("Do you want to pick it up? Y/N: ")
+            if pick_up.lower() == "y":
+                options.inventory.append("Silver fork")
+                return
+            elif pick_up.lower() == "n":
+                print("You decide to leave the fork alone and get back up.")
+                return
+            else:
+                options.try_again()
+                options.kitchen_cabinet()
 
 
 
