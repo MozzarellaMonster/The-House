@@ -207,16 +207,32 @@ class options:
         choice = input()
 
         if choice.lower() == "a":
-            print("You head into the kitchen. It is drab, with the cabinets painted a faded yellow with white tile counters.")
-            print("The oven stood open like a gaping maw, the door having fallen off the hinges.")
-            print("The refrigerator stood about two feet away from the wall, appearing to have been pulled away from it.")
-            print("The floor is a checkered black and white and the small table has been destroyed, it looks like it was hit by a massive impact.")
-            print("At first, nothing really stands out to you, but then you notice something glinting inside a broken cabinet with no door.")
-            print("There is also the matter of opening the refrigerator, whose door is still intact and closed.")
-            print("A. Investigate the glinting object")
-            print("B. Open the refrigerator door")
-            print("C. Go back into the hallway")
+            print("You head into the kitchen.")
+            options.kitchen()
 
+        elif choice.lower() == "b":
+            print("You take the first step down into the basement.")
+
+        elif choice.lower() == "c":
+            print("You turn around and head back into the foyer.")
+
+        else:
+            options.try_again()
+            options.hallway()    
+
+            
+
+    def kitchen():
+        print("It is drab, with the cabinets painted a faded yellow with white tile counters.")
+        print("The oven stood open like a gaping maw, the door having fallen off the hinges.")
+        print("The refrigerator stood about two feet away from the wall, appearing to have been pulled away from it.")
+        print("The floor is a checkered black and white and the small table has been destroyed, it looks like it was hit by a massive impact.")
+        print("At first, nothing really stands out to you, but then you notice something glinting inside a broken cabinet with no door.")
+        print("There is also the matter of opening the refrigerator, whose door is still intact and closed.")
+        print("A. Investigate the glinting object")
+        print("B. Open the refrigerator door")
+        print("C. Go back into the hallway")
+        choice = input()
         
 
 
