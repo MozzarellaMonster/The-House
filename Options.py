@@ -264,8 +264,11 @@ class options:
             options.kitchen_cabinet()
 
     def basement():
-        pass
+        print("The stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
+        print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
+        print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
 
+    # Add flashlight to items.
 
     def stairs():
         pass
