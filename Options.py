@@ -229,6 +229,7 @@ class options:
         print("The floor is a checkered black and white and the small table has been destroyed, it looks like it was hit by a massive impact.")
         print("At first, nothing really stands out to you, but then you notice something glinting inside a broken cabinet with no door.")
         print("There is also the matter of opening the refrigerator, whose door is still intact and closed.")
+        print("\nWhat would you like to do?")
         print("A. Investigate the glinting object")
         print("B. Open the refrigerator door")
         print("C. Go back into the hallway")
@@ -249,11 +250,9 @@ class options:
             options.try_again()
             options.kitchen()
             
-        
-
                 
     def kitchen_cabinet():
-        pick_up = input("Do you want to pick it up? Y/N: ")
+        pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
             options.inventory.append("Silver fork")
             return
@@ -264,6 +263,8 @@ class options:
             options.try_again()
             options.kitchen_cabinet()
 
+    def basement():
+        pass
 
 
     def stairs():
