@@ -268,7 +268,10 @@ class options:
         print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
         print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
 
-    # Add flashlight to items.
+    def basement_with_light():
+        print("Now that you have a light source, you can definitely see better in the dark basement.")
+        print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
+        print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
 
     def stairs():
         pass
