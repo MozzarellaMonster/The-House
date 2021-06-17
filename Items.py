@@ -7,3 +7,6 @@ class items:
 
     def attic_key():
         pass
+
+    def flashlight():
+        pass
