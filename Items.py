@@ -1,9 +1,9 @@
 class items:
-    
+
     silver_fork = {
         "Item name": "Silver Fork",
         "Found in": "Kitchen",
-        "Used in": "PASS"
+        "Used in": "Living Room"
     }
 
     old_gear = {

@@ -1,3 +1,5 @@
+import Items
+
 class options:
     inventory = []
     endings = []
@@ -264,19 +266,33 @@ class options:
             options.kitchen_cabinet()
 
     def basement():
-        print("The stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
-        print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
-        print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
-
-    def basement_with_light():
-        print("Now that you have a light source, you can definitely see better in the dark basement.")
-        print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
-        print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
+        if Items.flashlight in options.inventory:
+            print("Now that you have a light source, you can definitely see better in the dark basement.")
+            print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
+            print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
+        else:
+            print("The stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
+            print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
+            print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
 
     def stairs():
-        pass
+        print("You head up the stairs, your hand gliding along the surprisingly smooth polished surface of the banister.")
+        print("The old wooden steps creak as you make your way up.")
+        print("You notice the pale, unfaded patches of wall where pictures used to hang.")
+        print("You reach the top of the stairs.")
+        options.upper_hallway()
     
+    def upper_hallway():
+        print("You look around the upstairs hallway and immediately notice three doors.")
+        print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another appears to lead to the attic.")
+        print("\nWhich room would you like to explore?")
+        print("A. Bathroom")
+        print("B. Bedroom")
+        print("C. Attic")
 
+    
+    def bedroom():
+        pass
 
     def try_again():
         print("Sorry, that is not a valid option. Please try again.\n")
