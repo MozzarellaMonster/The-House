@@ -1,16 +1,5 @@
 class items:
-    #def silver_fork():
-    #    pass
-
-    #def old_gear():
-    #    pass
-
-    #def attic_key():
-    #    pass
-
-    #def flashlight():
-    #    pass
-
+    
     silver_fork = {
         "Item name": "Silver Fork",
         "Found in": "Kitchen",
