@@ -1,4 +1,7 @@
+from Items import items
+
 class options:
+
     inventory = []
     endings = []
 
@@ -287,6 +290,20 @@ class options:
         print("A. Bathroom")
         print("B. Bedroom")
         print("C. Attic")
+        choice = input()
+        
+        if choice.lower() == "a":
+            print("You choose to explore the bathroom.")
+            print("You go inside the bathroom and immediately notice the dirty and stained mirror, cracked with age.")
+            print("There is also a broken down toilet and the shower with a missing showerhead.")
+            print("The cabinet doors are missing and there is no compartment behind the mirror.")
+            print("Seeing nothing of interest in the bathroom, you leave.")
+        
+        elif choice.lower() == "b":
+            print("You choose to explore the bedroom.")
+            print("You make your way into the bedroom and admire the stunning mahogany four-poster bed the takes up the majority of the space.")
+            print("There is also a wardrobe, dresser, and a trunk at the end of the bed.")
+            
 
     
     def bedroom():
