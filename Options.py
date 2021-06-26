@@ -1,5 +1,3 @@
-import Items
-
 class options:
     inventory = []
     endings = []
@@ -256,7 +254,7 @@ class options:
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
-            options.inventory.append("Silver fork")
+            options.inventory.append(items.silver_fork)
             return
         elif pick_up.lower() == "n":
             print("You decide to leave the fork alone and get back up.")
@@ -266,7 +264,7 @@ class options:
             options.kitchen_cabinet()
 
     def basement():
-        if Items.flashlight in options.inventory:
+        if items.flashlight in options.inventory:
             print("Now that you have a light source, you can definitely see better in the dark basement.")
             print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
             print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
