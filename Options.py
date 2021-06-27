@@ -108,7 +108,7 @@ class options:
 
 
     def foyer():
-        print("On the other side of the door lies a dimly lit foyer, stairs go up on the right, to the left there is a")
+        print("In front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
         print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
         print("\nWhich area would you like to explore?")
         print("A. Go through the left door")
@@ -359,8 +359,26 @@ class options:
 
     
     def attic():
-        pass
-    
+        print("You head up the short staircase and poke your head into the dark gloom of the attic.")
+        print("Surprisingly, the attic is quite empty save for an old safe that leaning against one wall of the dusty room.")
+        print("Seeing no other option, you head up to the old safe.")
+        if items.attic_key in options.inventory:
+            print("You notice that unique ellipse shape on the door of the safe from that key you picked up earlier in the foyer.")
+            print("Curious, you bring the key out from your pocket and try it in the keyhole of the safe.")
+            print("It works.")
+            print("You slowly twist the key and hear a satisfying click.")
+            print("You creak open the old safe's door. Inside, you find a dusty old gear.")
+            print("You add it to your backpack.")
+            options.inventory.append(items.old_gear)
+            print("You close the old safe and head out of the attic.")
+            options.upper_hallway()
+        else:
+            print("You notice that there's a unique ellipse shape on the door.")
+            print("It seems somewhat familiar...")
+            print("Unfortunately, you cannot do any more with the safe at this time.")
+            print("You make your way back down the short staircase.")
+            options.attic()
+
 
     def try_again():
         print("Sorry, that is not a valid option. Please try again.\n")
