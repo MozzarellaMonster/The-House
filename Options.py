@@ -5,7 +5,7 @@ class options:
     inventory = []
     endings = []
 
-
+    #Decide if you want to make it optional to pick up inventory items.
     def endgame(choice):
         if choice == "porch":
             print("Guess the paper sent out the wrong person for the story, huh?")
@@ -234,7 +234,6 @@ class options:
         print("C. Go back into the hallway")
         choice = input("\n")
 
-        #Decide if you want to make it optional to pick up inventory items.
         if choice.lower() == "a":
             print("You bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative dagger.")
@@ -287,6 +286,7 @@ class options:
         else:
             print("You head down the stairs.")
             options.foyer()
+
 
     def upper_hallway():
         print("You look around the upstairs hallway and immediately notice three doors.")
