@@ -177,8 +177,6 @@ class options:
             options.left_door()
 
 
-
-
     def right_door():
         print("The right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
         print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -198,8 +196,7 @@ class options:
         else:
             options.try_again()
             options.right_door()
-      
-    
+
 
     def hallway():
         print("You head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
@@ -221,9 +218,8 @@ class options:
 
         else:
             options.try_again()
-            options.hallway()    
+            options.hallway()            
 
-            
 
     def kitchen():
         print("It is drab, with the cabinets painted a faded yellow with white tile counters.")
@@ -236,11 +232,11 @@ class options:
         print("A. Investigate the glinting object")
         print("B. Open the refrigerator door")
         print("C. Go back into the hallway")
-        choice = input()
+        choice = input("\n")
 
         if choice.lower() == "a":
             print("You bend down and look deeper into the broken cabinet.")
-            print("It is a silver, decorative fork.")
+            print("It is a silver, decorative dagger.")
             options.kitchen_cabinet()
         elif choice.lower() == "b":
             print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
@@ -257,15 +253,17 @@ class options:
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
-            options.inventory.append(items.silver_fork)
+            options.inventory.append(items.silver_dagger)
             return
         elif pick_up.lower() == "n":
-            print("You decide to leave the fork alone and get back up.")
+            print("You decide to leave the dagger alone and get back up.")
             return
         else:
             options.try_again()
             options.kitchen_cabinet()
 
+
+    #Finish basement
     def basement():
         if items.flashlight in options.inventory:
             print("Now that you have a light source, you can definitely see better in the dark basement.")
@@ -276,6 +274,7 @@ class options:
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
 
+
     def stairs():
         print("You head up the stairs, your hand gliding along the surprisingly smooth polished surface of the banister.")
         print("The old wooden steps creak as you make your way up.")
@@ -283,6 +282,7 @@ class options:
         print("You reach the top of the stairs.")
         options.upper_hallway()
     
+
     def upper_hallway():
         print("You look around the upstairs hallway and immediately notice three doors.")
         print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another appears to lead to the attic.")
@@ -290,24 +290,46 @@ class options:
         print("A. Bathroom")
         print("B. Bedroom")
         print("C. Attic")
-        choice = input()
+        choice = input("\n")
         
         if choice.lower() == "a":
-            print("You choose to explore the bathroom.")
-            print("You go inside the bathroom and immediately notice the dirty and stained mirror, cracked with age.")
-            print("There is also a broken down toilet and the shower with a missing showerhead.")
-            print("The cabinet doors are missing and there is no compartment behind the mirror.")
-            print("Seeing nothing of interest in the bathroom, you leave.")
+            options.bathroom()
         
         elif choice.lower() == "b":
-            print("You choose to explore the bedroom.")
-            print("You make your way into the bedroom and admire the stunning mahogany four-poster bed the takes up the majority of the space.")
-            print("There is also a wardrobe, dresser, and a trunk at the end of the bed.")
+            options.bedroom()
+
+        elif choice.lower() == "c":
+            options.attic()
             
+        else:
+            options.try_again()
+            options.upper_hallway()
+    
+
+    def bathroom():
+        print("You choose to explore the bathroom.")
+        print("You go inside the bathroom and immediately notice the dirty and stained mirror, cracked with age.")
+        print("There is also a broken down toilet and the shower with a missing showerhead.")
+        print("The cabinet doors are missing and there is no compartment behind the mirror.")
+        print("Seeing nothing of interest in the bathroom, you leave.")
+        options.upper_hallway()
+    
+
+    def bedroom():
+        print("You choose to explore the bedroom.")
+        print("You make your way into the bedroom and admire the stunning mahogany four-poster bed the takes up the majority of the space.")
+        print("There is also a wardrobe, dresser, and a trunk at the end of the bed.")
+        print("Seeing no other furniture, you decide either the dresser, trunk, or wardrobe might be worth investigating.")
+        print("\nWhich would you like to choose?")
+        print("A. Dresser")
+        print("B. Trunk")
+        print("C. Wardrobe")
+        choice = input("\n")
 
     
-    def bedroom():
+    def attic():
         pass
+    
 
     def try_again():
         print("Sorry, that is not a valid option. Please try again.\n")

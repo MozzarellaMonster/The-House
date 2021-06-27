@@ -1,7 +1,7 @@
 class items:
 
-    silver_fork = {
-        "Item name": "Silver Fork",
+    silver_dagger = {
+        "Item name": "Silver Dagger",
         "Found in": "Kitchen",
         "Used in": "Living Room"
     }
