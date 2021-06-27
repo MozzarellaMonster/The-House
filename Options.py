@@ -234,9 +234,11 @@ class options:
         print("C. Go back into the hallway")
         choice = input("\n")
 
+        #Decide if you want to make it optional to pick up inventory items.
         if choice.lower() == "a":
             print("You bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative dagger.")
+            #print("You pick it up.")
             options.kitchen_cabinet()
         elif choice.lower() == "b":
             print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
@@ -275,13 +277,16 @@ class options:
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
 
 
-    def stairs():
-        print("You head up the stairs, your hand gliding along the surprisingly smooth polished surface of the banister.")
-        print("The old wooden steps creak as you make your way up.")
-        print("You notice the pale, unfaded patches of wall where pictures used to hang.")
-        print("You reach the top of the stairs.")
-        options.upper_hallway()
-    
+    def stairs(direction):
+        if direction == "up":
+            print("You head up the stairs, your hand gliding along the surprisingly smooth polished surface of the banister.")
+            print("The old wooden steps creak as you make your way up.")
+            print("You notice the pale, unfaded patches of wall where pictures used to hang.")
+            print("You reach the top of the stairs.")
+            options.upper_hallway()
+        else:
+            print("You head down the stairs.")
+            options.foyer()
 
     def upper_hallway():
         print("You look around the upstairs hallway and immediately notice three doors.")
@@ -290,6 +295,7 @@ class options:
         print("A. Bathroom")
         print("B. Bedroom")
         print("C. Attic")
+        print("D. Leave the hallway")
         choice = input("\n")
         
         if choice.lower() == "a":
@@ -301,6 +307,8 @@ class options:
         elif choice.lower() == "c":
             options.attic()
             
+        elif choice.lower() == "d":
+            options.stairs("down")
         else:
             options.try_again()
             options.upper_hallway()
@@ -324,7 +332,30 @@ class options:
         print("A. Dresser")
         print("B. Trunk")
         print("C. Wardrobe")
+        print("D. Leave the bedroom")
         choice = input("\n")
+
+        if choice.lower() == "a":
+            print("You go up to the dresser and open the drawers one by one. You don't really find much, except for some mothballs.")
+            print("You leave the dresser, closing all the drawers first.")
+            options.bedroom()
+        
+        elif choice.lower() == "b":
+            print("You crouch in front of the trunk and slowly open it. Inside, you find a single flashlight.")
+            print("You flick the switch and find that it still works, despite its obvious age.")
+            options.inventory.append(items.flashlight)
+            print("You decide to take it with you.")
+            options.bedroom()
+        
+        elif choice.lower() == "c":
+            print("You walk up to the wardrobe and slowly open it.")
+            print("Inside, you find an old jacket. Perhaps it belonged to whoever used to live here?")
+            print("You attempt to move the jacket, but immediately falls apart. It's clear you can't move it.")
+            print("You close the wardrobe and turn back to the room.")
+            options.bedroom()
+        
+        elif choice.lower() == "d":
+            options.upper_hallway()
 
     
     def attic():
