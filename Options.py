@@ -21,8 +21,7 @@ class options:
             print("\nYou grip the doorknob again and with a shaky breath, open the door...")
             options.entryway()
         elif choice.lower() == 'n':
-            print("\nYou turn around and head back to your car, head lowered in")
-            print("shame.")
+            print("\nYou turn around and head back to your car, head lowered in shame.")
             options.endgame("porch")
         else:
             options.try_again()
@@ -50,15 +49,13 @@ class options:
         if choice.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
-            options.inventory.append("Attic Key")
-            print("You turn back to the room.")
+            options.inventory.append(items.attic_key)
             options.entryway_3("a")
             
         elif choice.lower() == "b":
             print("You investigate the painting. It is a self-portait of a very stern-looking man with")
-            print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
+            print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
             print("about it.")
-            print("You turn back to the room.")
             options.entryway_3("b")
 
         elif choice.lower() == "c":
