@@ -5,6 +5,8 @@ class options:
     inventory = []
     endings = []
 
+    first_stairs = True
+
     #Decide if you want to make it optional to pick up inventory items.
     def endgame(choice):
         if choice == "porch":
@@ -16,6 +18,22 @@ class options:
     #def retry():
     #    re = input("Would you like to retry? Y/N: ")
     #    if re.lower() == "y":
+
+    #Get this ready for basement scenario
+    def vault(key = None):
+        rod = [0,0,0,0]
+        if key == items.old_gear["Item name"]:
+            rod[0] = 1
+        elif key == items.silver_dagger["Item name"]:
+            rod[1] = 1
+        elif key == "Wardrobe switch":
+            rod[2] = 1
+        elif key == "Crane":
+            rod[3] = 1
+        if rod == [1,1,1,1]:
+            return 1
+        
+            
 
 
     def porch():
@@ -130,7 +148,7 @@ class options:
             options.right_door()
         elif choice.lower() == "d":
             print("\nYou have chosen to go up the stairs. You grip the banister and take the first step...")
-            options.stairs()
+            options.stairs("up")
         elif choice.lower() == "e":
             print("\nYou try to go back through the door, but it is locked. You turn back around")
             options.foyer()
@@ -196,6 +214,7 @@ class options:
                 print("in the display case. Carefully, you set the knife into the case, making sure not to cut the")
                 print("leather strap that holds the knife in place.")
                 print("Somewhere in the house, you hear a large thunk, then silence.")
+                options.vault(items.silver_dagger["Item name"])
                 print("You turn back to the room.")
                 options.left_door_2()
 
@@ -232,7 +251,7 @@ class options:
             print("\nThe desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
             print("What do you want to do?")
-            
+            options.desk()
             #Finish this
 
         elif choice.lower() == "b":
@@ -240,13 +259,15 @@ class options:
                 print("\nYou fish the old gear out of your pocket and place it firmly in the hidden compartment of the globe.")
                 print("Without any futher action on your part, the gears inexplicably move on their own.")
                 print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
+                options.vault(items.old_gear["Item name"])
                 print("You turn back to the room.")
-                options.right_door()
+                options.right_door_2()
             else:
                 print("\nYou were right when you guessed the globe had a hidden compartment within it.")
                 print("You opened it up to find a contraption made of several gears tucked tightly inside.")
                 print("There appears to be a gear missing. Nothing will move without that gear.")
                 print("You turn back to the room.")
+                options.right_door_2()
 
         elif choice.lower() == "c":
             print("\nYou decide to leave the room.")
@@ -332,26 +353,36 @@ class options:
 
     #Finish basement
     def basement():
-        if items.flashlight in options.inventory:
+        if items.flashlight in options.inventory and options.vault() != 1:
             print("\nNow that you have a light source, you can definitely see better in the dark basement.")
             print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
             print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
-            #Finish this
-
+            print("You slowly approach the slab and note its resemblance to a large vault door.")
+            print("You examine it closely and notice there are four large metal bolts keeping the slab in place.")
+            print("With nothing else of interest in the basement, you decide to leave.")
+            options.hallway()
 
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
             options.hallway()
+    
+    #Finish this
+    def basement_vault():
+        pass
 
 
     def stairs(direction):
-        if direction == "up":
+        if direction == "up" and options.first_stairs:
             print("\nYou head up the stairs, your hand gliding along the surprisingly smooth polished surface of the banister.")
             print("The old wooden steps creak as you make your way up.")
             print("You notice the pale, unfaded patches of wall where pictures used to hang.")
             print("You reach the top of the stairs.")
+            first = False
+            options.upper_hallway()
+        elif direction == "up":
+            print("You head up the stairs.")
             options.upper_hallway()
         else:
             print("You head down the stairs.")
@@ -398,6 +429,9 @@ class options:
         print("You make your way into the bedroom and admire the stunning mahogany four-poster bed the takes up the majority of the space.")
         print("There is also a wardrobe, dresser, and a trunk at the end of the bed.")
         print("Seeing no other furniture, you decide either the dresser, trunk, or wardrobe might be worth investigating.")
+        options.bedroom_2()
+    
+    def bedroom_2():
         print("\nWhich would you like to choose?")
         print("A. Dresser")
         print("B. Trunk")
@@ -408,24 +442,35 @@ class options:
         if choice.lower() == "a":
             print("\nYou go up to the dresser and open the drawers one by one. You don't really find much, except for some mothballs.")
             print("You leave the dresser, closing all the drawers first.")
-            options.bedroom()
+            options.bedroom_2()
         
         elif choice.lower() == "b":
             print("\nYou crouch in front of the trunk and slowly open it. Inside, you find a single flashlight.")
-            print("You flick the switch and find that it still works, despite its obvious age.")
+            print("You flip the switch and find that it still works, despite its obvious age.")
             options.inventory.append(items.flashlight)
             print("You decide to take it with you.")
-            options.bedroom()
+            options.bedroom_2()
         
         elif choice.lower() == "c":
             print("\nYou walk up to the wardrobe and slowly open it.")
-            print("Inside, you find an old jacket. Perhaps it belonged to whoever used to live here?")
-            print("You attempt to move the jacket, but immediately falls apart. It's clear you can't move it.")
-            print("You close the wardrobe and turn back to the room.")
-            options.bedroom()
+            print("At first, you don't see anything of interest. Looking closer, you see a small switch in the back of")
+            print("the wardrobe.")
+            options.wardrobe()
         
         elif choice.lower() == "d":
+            print("\nYou decide to leave the bedroom.")
             options.upper_hallway()
+        
+    def wardrobe():
+        choice = input("Do you want to flip the switch? Y/N: ")
+        if choice.lower() == "y":
+            print("\nYou flip the switch and almost immediately hear a loud thunk somewhere in the house.")
+            options.vault("Wardrobe switch")
+            print("You turn back to the room.")
+            options.bedroom_2()
+        elif choice.lower() == "n":
+            print("\nYou decide to leave the switch alone and turn back to the room.")
+            options.bedroom_2()
 
     
     def attic():
