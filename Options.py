@@ -12,6 +12,7 @@ class options:
             print("GAME OVER: Ending 1: Coward")
             options.endings.append("Ending 1: Coward")
 
+    #Decide if you want to finish making this function:
     #def retry():
     #    re = input("Would you like to retry? Y/N: ")
     #    if re.lower() == "y":
@@ -21,7 +22,7 @@ class options:
         choice = input("Do you dare to enter the house? Y/N: ")
 
         if choice.lower() == 'y':
-            print("\nYou grip the doorknob again and with a shaky breath, open the door...")
+            print("\nYou grip the doorknob again and with a shaky breath, you open the door...")
             options.entryway()
         elif choice.lower() == 'n':
             print("\nYou turn around and head back to your car, head lowered in shame.")
@@ -50,13 +51,13 @@ class options:
         choice = input("\nWhat would you like to do?: ")        
         
         if choice.lower() == "a":
-            print("You investigate the table and notice it has only one drawer. You open it.")
+            print("\nYou investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
             options.inventory.append(items.attic_key)
             options.entryway_3("a")
             
         elif choice.lower() == "b":
-            print("You investigate the painting. It is a self-portait of a very stern-looking man with")
+            print("\nYou investigate the painting. It is a self-portait of a very stern-looking man with")
             print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
             print("about it.")
             options.entryway_3("b")
@@ -89,12 +90,12 @@ class options:
             
         if choice_2 == "1":
             print("\nYou investigate the painting. It is a self-portait of a very stern-looking man with")
-            print("a large handlebar mustache and piercing brown eyes. There is otherwise nothing interesting")
-            print("about it.")
+            print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
+            print("about it.\n")
             done = True
         elif choice_2.lower() == "a":
             print("You investigate the table and notice it has only one drawer. You open it.")
-            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
+            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.\n")
             options.inventory.append("Attic Key")
             done = True
 
@@ -157,32 +158,32 @@ class options:
         choice = input()
 
         if choice.lower() == "a":
-            print("You go to the bookshelf and look over the old tomes on the shelf.")
+            print("\nYou go to the bookshelf and look over the old tomes on the shelf.")
             print("Aside from noticing the majority of them were mystery and thrillers, nothing really stands out about them.")
             print("You turn back to the room.")
             options.left_door_2()
             
         elif choice.lower() == "b":
-            print("You go up to the fireplace and admire the intricate carvings of grapevines on it.")
+            print("\nYou go up to the fireplace and admire the intricate carvings of grapevines on it.")
             print("There seems to be one cluster of grapes that stands out from the rest.")
             print("Specifically, one particular grape. You graze your hand over it and notice that it gently")
             print("gives under the pressure of your finger. It's a button! Push it?")
-            push = input("Will you push the button, Y/N?: ")
+            push = input("\nWill you push the button, Y/N?: ")
 
             if push.lower() == "y":
-                print("You push the button. Suddenly, a cast iron claws grabs your hand, its grip like a vice.")
+                print("\nYou push the button. Suddenly, a cast iron claws grabs your hand, its grip like a vice.")
                 print("You struggle, helplessly trying to pry the claw off your nearly broken hand.")
                 print("You then feel a pulling sensation. And you realize the claw is dragging you into the fireplace.")
                 print("You pull even harder and try your hardest to relieve yourself of the iron claw.")
                 print("You fail and soon hear the gas being pumped in.")
                 print("You only have a moment to realize what's happening before the world around you is engulfed in flames.")
                 print("No one can hear your screams over the roar of the fire.")
-                print("GAME OVER: Ending 2: Burn, baby, BURN.")
+                print("\nGAME OVER: Ending 2: Burn, baby, BURN.")
                 options.endings.append("Ending 2: Burn, baby, BURN.")
                 #options.retry()
                 
             elif push.lower() == "n":
-                print("You decide not to push the button.")
+                print("\nYou decide not to push the button.")
                 print("Strangely, you let out a breath you didn't realize you were holding.")
                 print("You don't know how, but you just know you made the right decision.")
                 print("You turn back to the room.")
@@ -191,17 +192,21 @@ class options:
 
         elif choice.lower() == "c":
             if items.silver_dagger in options.inventory:
-                print("You pull out the silver dagger you found in the kitchen and line it up with the impression")
+                print("\nYou pull out the silver dagger you found in the kitchen and line it up with the impression")
                 print("in the display case. Carefully, you set the knife into the case, making sure not to cut the")
                 print("leather strap that holds the knife in place.")
 
             else:
-                print("You walk up to the display case and brush away the dust collected on the glass lid.")
+                print("\nYou walk up to the display case and brush away the dust collected on the glass lid.")
                 print("It's empty. Figures, maybe some looters took whatever valuable thing may have been inside?")
                 print("You look closer and notice the faint impression of a dagger in the velvet cushion of the case.")
                 print("Interesting, maybe whoever lived here before liked collecting antiques?")
                 print("You turn back to the room.")
                 options.left_door_2()
+        
+        elif choice.lower() == "d":
+            print("You decide to leave the living room.")
+            options.foyer()
         
         else:
             options.try_again()
