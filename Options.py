@@ -195,6 +195,9 @@ class options:
                 print("\nYou pull out the silver dagger you found in the kitchen and line it up with the impression")
                 print("in the display case. Carefully, you set the knife into the case, making sure not to cut the")
                 print("leather strap that holds the knife in place.")
+                print("Somewhere in the house, you hear a large thunk, then silence.")
+                print("You turn back to the room.")
+                options.left_door_2()
 
             else:
                 print("\nYou walk up to the display case and brush away the dust collected on the glass lid.")
@@ -205,7 +208,7 @@ class options:
                 options.left_door_2()
         
         elif choice.lower() == "d":
-            print("You decide to leave the living room.")
+            print("\nYou decide to leave the living room.")
             options.foyer()
         
         else:
@@ -216,23 +219,46 @@ class options:
     def right_door():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
         print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
-        choice = input("You could either check out the desk or the globe, which do you choose?\n A: The desk\n B: The globe stand")
+        options.right_door_2()
+
+    def right_door_2():
+        print("\nWhat would you like to do?")
+        print("A: The desk")
+        print("B: The globe stand")
+        print("C: Leave the room")
+        choice = input()
         
         if choice.lower() == "a":
-            print("The desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
+            print("\nThe desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
             print("What do you want to do?")
-
+            
+            #Finish this
 
         elif choice.lower() == "b":
-            print("You were right when you guessed the globe had a hidden compartment within it.")
-            print("You opened it up to find a contraption made of several gears tucked tightly inside.")
-            print("There appears to be a gear missing. Nothing will move without that gear.")
-        
+            if items.old_gear in options.inventory:
+                print("\nYou fish the old gear out of your pocket and place it firmly in the hidden compartment of the globe.")
+                print("Without any futher action on your part, the gears inexplicably move on their own.")
+                print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
+                print("You turn back to the room.")
+                options.right_door()
+            else:
+                print("\nYou were right when you guessed the globe had a hidden compartment within it.")
+                print("You opened it up to find a contraption made of several gears tucked tightly inside.")
+                print("There appears to be a gear missing. Nothing will move without that gear.")
+                print("You turn back to the room.")
+
+        elif choice.lower() == "c":
+            print("\nYou decide to leave the room.")
+            options.foyer()
+
         else:
             options.try_again()
             options.right_door()
 
+    def desk():
+        pass
+        #Finish this
 
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
@@ -248,9 +274,11 @@ class options:
 
         elif choice.lower() == "b":
             print("You take the first step down into the basement.")
+            options.basement()
 
         elif choice.lower() == "c":
             print("You turn around and head back into the foyer.")
+            options.foyer()
 
         else:
             options.try_again()
@@ -264,6 +292,9 @@ class options:
         print("The floor is a checkered black and white and the small table has been destroyed, it looks like it was hit by a massive impact.")
         print("At first, nothing really stands out to you, but then you notice something glinting inside a broken cabinet with no door.")
         print("There is also the matter of opening the refrigerator, whose door is still intact and closed.")
+        options.kitchen_2()
+
+    def kitchen_2():
         print("\nWhat would you like to do?")
         print("A. Investigate the glinting object")
         print("B. Open the refrigerator door")
@@ -273,12 +304,11 @@ class options:
         if choice.lower() == "a":
             print("You bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative dagger.")
-            #print("You pick it up.")
             options.kitchen_cabinet()
         elif choice.lower() == "b":
             print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
             print("An awful smell hits you and close the door immediately. Don't know what else you expected, honestly.")
-            options.kitchen()
+            options.kitchen_2()
         elif choice.lower() == "c":
             print("You turn around and go back into the hallway.")
             options.hallway()
@@ -306,10 +336,14 @@ class options:
             print("\nNow that you have a light source, you can definitely see better in the dark basement.")
             print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
             print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
+            #Finish this
+
+
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
+            options.hallway()
 
 
     def stairs(direction):
@@ -417,4 +451,4 @@ class options:
 
 
     def try_again():
-        print("Sorry, that is not a valid option. Please try again.\n")
+        print("\nSorry, that is not a valid option. Please try again.\n")
