@@ -328,7 +328,13 @@ class options:
             options.kitchen_cabinet()
         elif choice.lower() == "b":
             print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
-            print("An awful smell hits you and close the door immediately. Don't know what else you expected, honestly.")
+            print("An awful smell hits you and close the door immediately.")
+            print("You immediately start to itch all over your body. You look down and scream.")
+            print("Small, moldy growths are appearing all over your body. You scratch and scratch, but the itch won't go away.")
+            print("Mold soon covers your entire body and you find it hard to breathe as spores fill your lungs.")
+            print("You collapse as your final breath leaves you.")
+            print("GAME OVER: Ending 3: Itchy end")
+            options.endings.append("Itchy end")
             options.kitchen_2()
         elif choice.lower() == "c":
             print("You turn around and go back into the hallway.")
@@ -341,7 +347,7 @@ class options:
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
-            print("You pick up the dagger. The cold heavy weighs on your hand and fills you with a small sense of dread.")
+            print("You pick up the dagger. The cold heavy knife weighs on your hand and fills you with a small sense of dread.")
             print("You quickly put the item away and turn back to the kitchen.")
             options.inventory.append(items.silver_dagger)
             options.kitchen_2()
