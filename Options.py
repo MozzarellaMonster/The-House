@@ -341,11 +341,13 @@ class options:
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
+            print("You pick up the dagger. The cold heavy weighs on your hand and fills you with a small sense of dread.")
+            print("You quickly put the item away and turn back to the kitchen.")
             options.inventory.append(items.silver_dagger)
-            return
+            options.kitchen_2()
         elif pick_up.lower() == "n":
             print("You decide to leave the dagger alone and get back up.")
-            return
+            options.kitchen_2()
         else:
             options.try_again()
             options.kitchen_cabinet()
@@ -379,7 +381,7 @@ class options:
             print("The old wooden steps creak as you make your way up.")
             print("You notice the pale, unfaded patches of wall where pictures used to hang.")
             print("You reach the top of the stairs.")
-            first = False
+            options.first_stairs = False
             options.upper_hallway()
         elif direction == "up":
             print("You head up the stairs.")
