@@ -52,7 +52,7 @@ class options:
 
 
     def entryway():
-        print("A dimly lit entryway greets you, sunlight managing to make it in through")
+        print("\nA dimly lit entryway greets you, sunlight managing to make it in through")
         print("the caked-on grime on the large stained glass windows above the front door.")
         print("There's an expensive-looking rug running along the floor and a surprising lack")
         print("of vandalism, despite the door not being locked. There is a small table on one side")
@@ -62,7 +62,7 @@ class options:
 
 
     def entryway_2():
-        print("As far as you can tell, there are three options:\n")
+        print("\nAs far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
@@ -81,7 +81,7 @@ class options:
             options.entryway_3("b")
 
         elif choice.lower() == "c":
-            print("You go through the door and make your way further inside...\n")
+            print("\nYou go through the door and make your way further inside...\n")
             options.foyer()
         
         else:
@@ -94,13 +94,13 @@ class options:
         done = False
         print("You turn back to the room.")
         if used == "a":
-            print("There are now two options left, you can either look at the painting or")
+            print("\nThere are now two options left, you can either look at the painting or")
             print("you can go through the door, which would you like to do?")
             print("1. Look at the painting")
             print("2. Go through the door")
             choice_2 = input()
         elif used == "b":
-            print("There are now two options left, you can either investigate the table or")
+            print("\nThere are now two options left, you can either investigate the table or")
             print("you can go through the door, which would you like to do?")
             print("A. Investigate the table")
             print("B. Go through the door")
@@ -112,13 +112,13 @@ class options:
             print("about it.\n")
             done = True
         elif choice_2.lower() == "a":
-            print("You investigate the table and notice it has only one drawer. You open it.")
+            print("\nYou investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it. You pocket it.\n")
             options.inventory.append("Attic Key")
             done = True
 
         if choice_2 == "2" or choice_2.lower() == "b" or done:
-            print("You go through the door and make your way further inside...\n")
+            print("\nYou go through the door and make your way further inside...\n")
             options.foyer()
         else:
             options.try_again()
@@ -127,7 +127,7 @@ class options:
 
 
     def foyer():
-        print("In front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
+        print("\nIn front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
         print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
         print("\nWhich area would you like to explore?")
         print("A. Go through the left door")
@@ -283,7 +283,8 @@ class options:
 
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
-        print("the other appears to be the basement. What would you like to do?")
+        print("the other appears to be the basement.")
+        print("\nWhat would you like to do?")
         print("A. Go into the kitchen")
         print("B. Head down into the basement")
         print("C. Go back into the foyer")
@@ -323,11 +324,11 @@ class options:
         choice = input("\n")
 
         if choice.lower() == "a":
-            print("You bend down and look deeper into the broken cabinet.")
+            print("\nYou bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative dagger.")
             options.kitchen_cabinet()
         elif choice.lower() == "b":
-            print("You open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
+            print("\nYou open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
             print("An awful smell hits you and close the door immediately.")
             print("You immediately start to itch all over your body. You look down and scream.")
             print("Small, moldy growths are appearing all over your body. You scratch and scratch, but the itch won't go away.")
@@ -335,9 +336,8 @@ class options:
             print("You collapse as your final breath leaves you.")
             print("GAME OVER: Ending 3: Itchy end")
             options.endings.append("Itchy end")
-            options.kitchen_2()
         elif choice.lower() == "c":
-            print("You turn around and go back into the hallway.")
+            print("\nYou turn around and go back into the hallway.")
             options.hallway()
         else:
             options.try_again()
@@ -347,12 +347,12 @@ class options:
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
-            print("You pick up the dagger. The cold heavy knife weighs on your hand and fills you with a small sense of dread.")
+            print("\n\nYou pick up the dagger. The cold heavy knife weighs on your hand and fills you with a small sense of dread.")
             print("You quickly put the item away and turn back to the kitchen.")
             options.inventory.append(items.silver_dagger)
             options.kitchen_2()
         elif pick_up.lower() == "n":
-            print("You decide to leave the dagger alone and get back up.")
+            print("\nYou decide to leave the dagger alone and get back up.")
             options.kitchen_2()
         else:
             options.try_again()
