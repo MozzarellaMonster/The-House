@@ -370,6 +370,13 @@ class options:
             print("With nothing else of interest in the basement, you decide to leave.")
             options.hallway()
 
+        elif options.vault() == 1:
+            print("\nHaving put different items back in their proper places or simply flicking a switch, you have unknowingly opened the basement vault.")
+            print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
+            print("Underneath you spy something strange. It looks like some type of machine, though not one you've ever seen before.")
+            print("There is a large stone ring with strange glyphs carved into it. Oddly, the glyphs appear to be glowing rather faintly.")
+            #Finish this
+            
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
