@@ -375,7 +375,25 @@ class options:
             print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
             print("Underneath you spy something strange. It looks like some type of machine, though not one you've ever seen before.")
             print("There is a large stone ring with strange glyphs carved into it. Oddly, the glyphs appear to be glowing rather faintly.")
-            #Finish this
+            print("The ring is held in place by large brackets on the machine. Several glowing buttons appear in a grid to the right of the stone ring.")
+            print("Each of the buttons are numbered, 1 - 9, with a small screen directly above the grid of buttons.")
+            print("You stare at the machine in confusion, not daring to touch anything for fear of what might happen.")
+            print("You hastily get up, intent on leaving the machine be. This might be a good chance to get something for the newspaper, however.")
+            print("You fish your phone out of your pocket, intent on taking a picture of the machine. Howvever, your car keys come along with it.")
+            print("The keys fall out of reach and hit several buttons on the machine. The stone ring glows brighter and a strange, opaque liquid shimmer appears in the center of the ring.")
+            print("You quickly grab the keys and turn to leave, but are soon stopped by a blinding flash of light directly behind you.")
+            print("You take a few moments to gather your senses, and soon your eyes adjust to see that you are now standing in front of several trees.")
+            print("You spin around, looking around for the familiar concrete walls of the basement, but find nothing but more trees.")
+            print("You look up into the pale blue sky, several clouds drifting lazily about, unaware of your current predicament.")
+            print("You take out your phone, intent on calling for help, but find you have no signal. You look about helplessly.")
+            print("The trees look like those found in some jungle, and now that you're paying more attention, you hear several bizarre animal calls.")
+            print("You look back down at the phone and pull up your compass app. It spins around uselessly. You put it back in your pocket.")
+            print("You take a hesitant step forward, not knowing where you're going or what you're going to do. You travel further into the jungle...")
+            print("GAME OVER: Ending 4: Lost")
+
+
+
+            
             
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
