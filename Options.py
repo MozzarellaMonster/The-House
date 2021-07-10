@@ -34,6 +34,8 @@ class options:
             print("\nYou turn around and head back to your car, head lowered in shame.")
             print("Guess the paper sent out the wrong person for the story, huh?")
             print("GAME OVER: Ending 1: Coward")
+            exit()
+
         else:
             options.try_again()
             options.porch()
@@ -79,7 +81,7 @@ class options:
             options.try_again()
             options.entryway_2()
 
-    def entryway_3(used = None, done = False):
+    def entryway_3(used, done = False):
         print("You turn back to the room.")
         if used == "a":
             print("\nThere are now two options left, you can either look at the painting or")
@@ -87,6 +89,7 @@ class options:
             print("1. Look at the painting")
             print("2. Go through the door")
             choice_2 = input()
+
         elif used == "b":
             print("\nThere are now two options left, you can either investigate the table or")
             print("you can go through the door, which would you like to do?")
@@ -99,11 +102,11 @@ class options:
             print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
             print("about it.\n")
             done = True
+
         elif choice_2.lower() == "a":
             print("\nYou investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it.")
             options.entryway_key("3")
-            done = True
 
         if choice_2 == "2" or choice_2.lower() == "b" or done:
             print("\nYou go through the door and make your way further inside...\n")
@@ -112,15 +115,16 @@ class options:
             options.try_again()
             options.entryway_3(used)
 
-    def entryway_key(from = None):
+    def entryway_key(where):
         choice = input("\nDo you want to pocket the key? Y/N: ")
         if choice.lower() == "y":
-            print("\nYou pocket the key and turn back to the room.")
+            print("\nYou pocket the key.")
             options.inventory.append(items.attic_key)
-            if from == "2":
+            if where == "2":
                 options.entryway_3("a")
-            elif from == "3":
-                options.entryway_3(done = True)
+            elif where == "3":
+                print("\nYou leave the room.")
+                options.foyer()
                 
         elif choice.lower() == "n":
             print("\nYou leave the key alone and turn back to the room.")
@@ -203,6 +207,7 @@ class options:
                 print("You only have a moment to realize what's happening before the world around you is engulfed in flames.")
                 print("No one can hear your screams over the roar of the fire.")
                 print("\nGAME OVER: Ending 2: Burn, baby, BURN.")
+                exit()
                 
             elif push.lower() == "n":
                 print("\nYou decide not to push the button.")
@@ -385,6 +390,8 @@ class options:
             print("Mold soon covers your entire body and you find it hard to breathe as spores fill your lungs.")
             print("You collapse as your final breath leaves you.")
             print("GAME OVER: Ending 3: Itchy end")
+            exit()
+
         elif choice.lower() == "c":
             print("\nYou turn around and go back into the hallway.")
             options.hallway()
@@ -438,6 +445,7 @@ class options:
             print("You look back down at the phone and pull up your compass app. It spins around uselessly. You put it back in your pocket.")
             print("You take a hesitant step forward, not knowing where you're going or what you're going to do. You travel further into the jungle...")
             print("GAME OVER: Ending 5: Lost")
+            exit()
             
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
@@ -520,6 +528,7 @@ class options:
             print("You try desperately to stop the bleeding as a wicked laugh fills the air.")
             print("The world soon fades away as you drop to the floor.")
             print("GAME OVER: Ending 4: Slit")
+            exit()
         
         elif choice.lower() == "n":
             print("You shudder a bit at the creepy sensation, but decide not to look closer at the mirror.")
