@@ -79,7 +79,7 @@ class options:
             options.try_again()
             options.entryway_2()
 
-    def entryway_3(used, done = False):
+    def entryway_3(used = None, done = False):
         print("You turn back to the room.")
         if used == "a":
             print("\nThere are now two options left, you can either look at the painting or")
@@ -112,7 +112,7 @@ class options:
             options.try_again()
             options.entryway_3(used)
 
-    def entryway_key(from):
+    def entryway_key(from = None):
         choice = input("\nDo you want to pocket the key? Y/N: ")
         if choice.lower() == "y":
             print("\nYou pocket the key and turn back to the room.")
