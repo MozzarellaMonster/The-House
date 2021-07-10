@@ -4,6 +4,7 @@ class options:
 
     inventory = []
     first_stairs = True
+    used_entryway = False
     
     def try_again():
         print("\nSorry, that is not a valid option. Please try again.\n")
@@ -45,19 +46,23 @@ class options:
         print("There's an expensive-looking rug running along the floor and a surprising lack")
         print("of vandalism, despite the door not being locked. There is a small table on one side")
         print("and a painting on the other. There is also one door leading further into the house.")
-        options.entryway_2()
+        options.entryway_2(options.used_entryway)
 
-    def entryway_2():
+    def entryway_2(used):
         print("\nAs far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
         choice = input("\nWhat would you like to do?: ")        
         
-        if choice.lower() == "a":
-            print("\nYou investigate the table and notice it has only one drawer. You open it.")
-            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.")
-            options.inventory.append(items.attic_key)
+        if choice.lower() == "a" and used == False:
+            print("\nYou decide to investigate the table and notice it has only one drawer. You open it.")
+            print("Inside, you find a single key with a decorative ellipse on it.")
+            options.entryway_key("2")
+        
+        elif choice.lower() == "a" and used:
+            print("\nYou open the drawer on the table.")
+            print("It is empty. You close it and turn back to the room.")
             options.entryway_3("a")
             
         elif choice.lower() == "b":
@@ -74,8 +79,7 @@ class options:
             options.try_again()
             options.entryway_2()
 
-    def entryway_3(used = None):
-        done = False
+    def entryway_3(used, done = False):
         print("You turn back to the room.")
         if used == "a":
             print("\nThere are now two options left, you can either look at the painting or")
@@ -97,8 +101,8 @@ class options:
             done = True
         elif choice_2.lower() == "a":
             print("\nYou investigate the table and notice it has only one drawer. You open it.")
-            print("Inside, you find a single key with a decorative ellipse on it. You pocket it.\n")
-            options.inventory.append("Attic Key")
+            print("Inside, you find a single key with a decorative ellipse on it.")
+            options.entryway_key("3")
             done = True
 
         if choice_2 == "2" or choice_2.lower() == "b" or done:
@@ -108,7 +112,23 @@ class options:
             options.try_again()
             options.entryway_3(used)
 
-
+    def entryway_key(from):
+        choice = input("\nDo you want to pocket the key? Y/N: ")
+        if choice.lower() == "y":
+            print("\nYou pocket the key and turn back to the room.")
+            options.inventory.append(items.attic_key)
+            if from == "2":
+                options.entryway_3("a")
+            elif from == "3":
+                options.entryway_3(done = True)
+                
+        elif choice.lower() == "n":
+            print("\nYou leave the key alone and turn back to the room.")
+            options.entryway_3("a")
+                
+        else:
+            options.try_again()
+            options.entryway_key()
 
     def foyer():
         print("\nIn front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
