@@ -113,6 +113,9 @@ class options:
     def foyer():
         print("\nIn front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
         print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
+        options.foyer_2()
+
+    def foyer_2():
         print("\nWhich area would you like to explore?")
         print("A. Go through the left door")
         print("B. Go forward into the hallway")
@@ -135,10 +138,10 @@ class options:
             options.stairs("up")
         elif choice.lower() == "e":
             print("\nYou try to go back through the door, but it is locked. You turn back around")
-            options.foyer()
+            options.foyer_2()
         else:
             options.try_again()
-            options.foyer()
+            options.foyer_2()
 
 
 
@@ -209,7 +212,7 @@ class options:
         
         elif choice.lower() == "d":
             print("\nYou decide to leave the living room.")
-            options.foyer()
+            options.foyer_2()
         
         else:
             options.try_again()
@@ -251,7 +254,7 @@ class options:
 
         elif choice.lower() == "c":
             print("\nYou decide to leave the room.")
-            options.foyer()
+            options.foyer_2()
 
         else:
             options.try_again()
@@ -326,7 +329,7 @@ class options:
 
         elif choice.lower() == "c":
             print("You turn around and head back into the foyer.")
-            options.foyer()
+            options.foyer_2()
 
         else:
             options.try_again()
@@ -437,7 +440,7 @@ class options:
             options.upper_hallway()
         else:
             print("You head down the stairs.")
-            options.foyer()
+            options.foyer_2()
 
 
 
@@ -474,22 +477,39 @@ class options:
         print("There is also a broken down toilet and the shower with a missing showerhead.")
         print("The cabinet doors are missing and there are shards of glass resting in the sink basin.")
         print("Out of the corner of your eye, you notice something move in the mirror.")
-        print("You look back to the mirror and examine it closely, staring into your reflection's eyes.")
-        print("Your body suddenly freezes and you realize you can't move. You're paralyzed.")
-        print("Your fear only grows stronger when you realize your reflection is moving on its own.")
-        print("It smiles wickedly as it grabs one of the shards of glass in the basin.")
-        print("Suddenly, your body follows your reflection's movements, grabbing an identical shard in the basin.")
-        print("The smile on your reflection grows wider as it raises the shard to its throat, your hand following in sync.")
-        print("You struggle, trying to shake your head, beg, fling the shard away, anything to stop and regain control of your body.")
-        print("It's hopeless. Your reflections stares back at you with triumph when it sees the palpable fear in your eyes.")
-        print("Slowly, it digs the shard of glass into its throat.")
-        print("You do the same and blood oozes from your neck.")
-        print("Ever so slowly, it draws the shard across your neck.")
-        print("You cough and sputter, finally regaining control of your body.")
-        print("You try desperately to stop the bleeding as a wicked laugh fills the air.")
-        print("The world soon fades away as you drop to the floor.")
-        print("GAME OVER: Ending 4: Choke")
+        print("You quickly look back at the mirror, but don't see anything out of the ordinary.")
+        print("Still, something's telling you to look closer...")
+        options.bathroom_mirror()
     
+    def bathroom_mirror():
+        choice = input("Look closer at the mirror? Y/N: ")
+        
+        if choice.lower() == "y":
+            print("You look at the mirror and examine it closely, staring into your reflection's eyes.")
+            print("Your body suddenly freezes and you realize you can't move. You're paralyzed.")
+            print("Your fear only grows stronger when you realize your reflection is moving on its own.")
+            print("It smiles wickedly as it grabs one of the shards of glass in the basin.")
+            print("Suddenly, your body follows your reflection's movements, grabbing an identical shard in the basin.")
+            print("The smile on your reflection grows wider as it raises the shard to its throat, your hand following in sync.")
+            print("You struggle, trying to shake your head, beg, fling the shard away, anything to stop and regain control of your body.")
+            print("It's hopeless. Your reflections stares back at you with triumph when it sees the palpable fear in your eyes.")
+            print("Slowly, it digs the shard of glass into its throat.")
+            print("You do the same and blood oozes from your neck.")
+            print("Ever so slowly, it draws the shard across your neck.")
+            print("You cough and sputter, finally regaining control of your body.")
+            print("You try desperately to stop the bleeding as a wicked laugh fills the air.")
+            print("The world soon fades away as you drop to the floor.")
+            print("GAME OVER: Ending 4: Slit")
+        
+        elif choice.lower() == "n":
+            print("You shudder a bit at the creepy sensation, but decide not to look closer at the mirror.")
+            print("You turn and leave the bathroom.")
+            options.upper_hallway()
+
+        else:
+            options.try_again()
+            options.bathroom_mirror()
+
 
 
     def bedroom():
