@@ -3,13 +3,7 @@ from Items import items
 class options:
 
     inventory = []
-
     first_stairs = True
-
-    def endgame(choice):
-        if choice == "porch":
-            print("Guess the paper sent out the wrong person for the story, huh?")
-            print("GAME OVER: Ending 1: Coward")
     
     def try_again():
         print("\nSorry, that is not a valid option. Please try again.\n")
@@ -37,7 +31,8 @@ class options:
             options.entryway()
         elif choice.lower() == 'n':
             print("\nYou turn around and head back to your car, head lowered in shame.")
-            options.endgame("porch")
+            print("Guess the paper sent out the wrong person for the story, huh?")
+            print("GAME OVER: Ending 1: Coward")
         else:
             options.try_again()
             options.porch()
