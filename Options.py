@@ -3,24 +3,17 @@ from Items import items
 class options:
 
     inventory = []
-    endings = []
 
     first_stairs = True
 
-    #Decide if you want to make it optional to pick up inventory items.
     def endgame(choice):
         if choice == "porch":
             print("Guess the paper sent out the wrong person for the story, huh?")
             print("GAME OVER: Ending 1: Coward")
-            options.endings.append("Ending 1: Coward")
-
-    #Decide if you want to finish making this function:
-    #def retry():
-    #    re = input("Would you like to retry? Y/N: ")
-    #    if re.lower() == "y":
-
-    #Get this ready for basement scenario
     
+    def try_again():
+        print("\nSorry, that is not a valid option. Please try again.\n")
+
     def vault(key = None):
         rod = [0,0,0,0]
         if key == items.old_gear["Item name"]:
@@ -35,7 +28,6 @@ class options:
             return 1
         
             
-
 
     def porch():
         choice = input("Do you dare to enter the house? Y/N: ")
@@ -59,8 +51,6 @@ class options:
         print("of vandalism, despite the door not being locked. There is a small table on one side")
         print("and a painting on the other. There is also one door leading further into the house.")
         options.entryway_2()
-    
-
 
     def entryway_2():
         print("\nAs far as you can tell, there are three options:\n")
@@ -88,8 +78,6 @@ class options:
         else:
             options.try_again()
             options.entryway_2()
-    
-
 
     def entryway_3(used = None):
         done = False
@@ -158,6 +146,7 @@ class options:
             options.foyer()
 
 
+
     def left_door():
         print("\nThe left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.")
         print("There are several things about this room that intrigue you.")
@@ -165,8 +154,6 @@ class options:
         print("Another is the large, intricately decorated fireplace against the wall.")
         print("The last thing of note is the display case underneath the window.")
         options.left_door_2()
-        
-
 
     def left_door_2():
         print("\nWhich would you like to investigate?")
@@ -198,8 +185,6 @@ class options:
                 print("You only have a moment to realize what's happening before the world around you is engulfed in flames.")
                 print("No one can hear your screams over the roar of the fire.")
                 print("\nGAME OVER: Ending 2: Burn, baby, BURN.")
-                options.endings.append("Ending 2: Burn, baby, BURN.")
-                #options.retry()
                 
             elif push.lower() == "n":
                 print("\nYou decide not to push the button.")
@@ -235,6 +220,7 @@ class options:
             options.try_again()
             options.left_door()
         
+
 
     def right_door():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
@@ -294,6 +280,7 @@ class options:
                 print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
                 print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
                 print("Somewhere in the house, you hear a loud thud, then silence.")
+                options.vault(items.pen["Item name"])
                 print("You turn back to the room.")
                 options.right_door_2()
             
@@ -305,6 +292,7 @@ class options:
             else:
                 options.try_again()
                 options.desk()
+                
         elif choice.lower() == "b":
             if items.pen in options.inventory:
                 print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
@@ -321,6 +309,8 @@ class options:
         else:
             options.try_again()
             options.desk()
+
+
 
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
@@ -346,6 +336,7 @@ class options:
         else:
             options.try_again()
             options.hallway()            
+
 
 
     def kitchen():
@@ -376,7 +367,6 @@ class options:
             print("Mold soon covers your entire body and you find it hard to breathe as spores fill your lungs.")
             print("You collapse as your final breath leaves you.")
             print("GAME OVER: Ending 3: Itchy end")
-            options.endings.append("Itchy end")
         elif choice.lower() == "c":
             print("\nYou turn around and go back into the hallway.")
             options.hallway()
@@ -384,7 +374,6 @@ class options:
             options.try_again()
             options.kitchen()
             
-                
     def kitchen_cabinet():
         pick_up = input("\nDo you want to pick it up? Y/N: ")
         if pick_up.lower() == "y":
@@ -400,7 +389,7 @@ class options:
             options.kitchen_cabinet()
 
 
-    #Finish basement
+
     def basement():
         if items.flashlight in options.inventory and options.vault() != 1:
             print("\nNow that you have a light source, you can definitely see better in the dark basement.")
@@ -411,7 +400,7 @@ class options:
             print("With nothing else of interest in the basement, you decide to leave.")
             options.hallway()
 
-        elif options.vault() == 1:
+        elif items.flashlight in options.inventory and options.vault() == 1:
             print("\nHaving put different items back in their proper places or simply flicking a switch, you have unknowingly opened the basement vault.")
             print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
             print("Underneath you spy something strange. It looks like some type of machine, though not one you've ever seen before.")
@@ -430,21 +419,14 @@ class options:
             print("The trees look like those found in some jungle, and now that you're paying more attention, you hear several bizarre animal calls.")
             print("You look back down at the phone and pull up your compass app. It spins around uselessly. You put it back in your pocket.")
             print("You take a hesitant step forward, not knowing where you're going or what you're going to do. You travel further into the jungle...")
-            print("GAME OVER: Ending 4: Lost")
-
-
-
-            
+            print("GAME OVER: Ending 5: Lost")
             
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
             options.hallway()
-    
-    #Finish this
-    def basement_vault():
-        pass
+
 
 
     def stairs(direction):
@@ -461,6 +443,7 @@ class options:
         else:
             print("You head down the stairs.")
             options.foyer()
+
 
 
     def upper_hallway():
@@ -489,14 +472,30 @@ class options:
             options.upper_hallway()
     
 
+
     def bathroom():
         print("\nYou choose to explore the bathroom.")
-        print("You go inside the bathroom and immediately notice the dirty and stained mirror, cracked with age.")
+        print("You go inside the bathroom and immediately notice the dirty and stained mirror, shattered in the lower right corner.")
         print("There is also a broken down toilet and the shower with a missing showerhead.")
-        print("The cabinet doors are missing and there is no compartment behind the mirror.")
-        print("Seeing nothing of interest in the bathroom, you leave.")
-        options.upper_hallway()
+        print("The cabinet doors are missing and there are shards of glass resting in the sink basin.")
+        print("Out of the corner of your eye, you notice something move in the mirror.")
+        print("You look back to the mirror and examine it closely, staring into your reflection's eyes.")
+        print("Your body suddenly freezes and you realize you can't move. You're paralyzed.")
+        print("Your fear only grows stronger when you realize your reflection is moving on its own.")
+        print("It smiles wickedly as it grabs one of the shards of glass in the basin.")
+        print("Suddenly, your body follows your reflection's movements, grabbing an identical shard in the basin.")
+        print("The smile on your reflection grows wider as it raises the shard to its throat, your hand following in sync.")
+        print("You struggle, trying to shake your head, beg, fling the shard away, anything to stop and regain control of your body.")
+        print("It's hopeless. Your reflections stares back at you with triumph when it sees the palpable fear in your eyes.")
+        print("Slowly, it digs the shard of glass into its throat.")
+        print("You do the same and blood oozes from your neck.")
+        print("Ever so slowly, it draws the shard across your neck.")
+        print("You cough and sputter, finally regaining control of your body.")
+        print("You try desperately to stop the bleeding as a wicked laugh fills the air.")
+        print("The world soon fades away as you drop to the floor.")
+        print("GAME OVER: Ending 4: Choke")
     
+
 
     def bedroom():
         print("\nYou choose to explore the bedroom.")
@@ -504,7 +503,7 @@ class options:
         print("There is also a wardrobe, dresser, and a trunk at the end of the bed.")
         print("Seeing no other furniture, you decide either the dresser, trunk, or wardrobe might be worth investigating.")
         options.bedroom_2()
-    
+
     def bedroom_2():
         print("\nWhich would you like to choose?")
         print("A. Dresser")
@@ -567,7 +566,3 @@ class options:
             print("Unfortunately, you cannot do any more with the safe at this time.")
             print("You make your way back down the short staircase.")
             options.attic()
-
-
-    def try_again():
-        print("\nSorry, that is not a valid option. Please try again.\n")
