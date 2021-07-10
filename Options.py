@@ -20,6 +20,7 @@ class options:
     #    if re.lower() == "y":
 
     #Get this ready for basement scenario
+    
     def vault(key = None):
         rod = [0,0,0,0]
         if key == items.old_gear["Item name"]:
@@ -242,17 +243,15 @@ class options:
 
     def right_door_2():
         print("\nWhat would you like to do?")
-        print("A: The desk")
-        print("B: The globe stand")
+        print("A: Investigate the desk")
+        print("B: Investigate the globe stand")
         print("C: Leave the room")
         choice = input()
         
         if choice.lower() == "a":
             print("\nThe desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
-            print("What do you want to do?")
             options.desk()
-            #Finish this
 
         elif choice.lower() == "b":
             if items.old_gear in options.inventory:
@@ -278,8 +277,50 @@ class options:
             options.right_door()
 
     def desk():
-        pass
-        #Finish this
+        print("What do you want to do?")
+        print("A. Look at the pen")
+        print("B. Look at the box")
+        choice = input()
+
+        if choice.lower() == "a":
+            print("You look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a fancy feather on it.")
+            print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
+            print("You glance at the box with the carving of a crane on it.")
+
+            print("\nDo you want to use the key on the box? Y/N: ")
+            choice_2 = input()
+            
+            if choice_2.lower() == "y":
+                print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
+                print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+                print("Somewhere in the house, you hear a loud thud, then silence.")
+                print("You turn back to the room.")
+                options.right_door_2()
+            
+            elif choice_2.lower() == "n":
+                print("\nYou put the key in your pocket.")
+                options.inventory.append(items.pen)
+                options.desk()
+
+            else:
+                options.try_again()
+                options.desk()
+        elif choice.lower() == "b":
+            if items.pen in options.inventory:
+                print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
+                print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+                print("Somewhere in the house, you hear a loud thud, then silence.")
+                print("You turn back to the room.")
+                options.right_door_2()
+            else:
+                print("You examine the box closely. It appears to have a keyhole in the front and is lined with gold trim around the lid of the box.")
+                print("The box is currently locked and cannot be opened.")
+                print("You turn back to the room.")
+                options.right_door_2()
+        
+        else:
+            options.try_again()
+            options.desk()
 
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")

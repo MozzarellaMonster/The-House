@@ -23,3 +23,9 @@ class items:
         "Found in": "Bedroom",
         "Used in": "Basement"
     }
+
+    pen = {
+        "Item name": "Pen",
+        "Found in": "Office",
+        "Used in": "Office"
+    }
