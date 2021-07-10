@@ -127,7 +127,7 @@ class options:
                 options.foyer()
                 
         elif choice.lower() == "n":
-            print("\nYou leave the key alone and turn back to the room.")
+            print("\nYou leave the key alone.")
             options.entryway_3("a")
                 
         else:
