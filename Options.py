@@ -4,15 +4,18 @@ class options:
 
     inventory = []
     first_stairs = True
+    used_entryway = False
     used_attic_key = False
     used_silver_dagger = False
     used_old_gear = False
-
+    used_pen = False
     used_wardrobe_switch = False
     used_crane_box = False
     
     def try_again():
         print("\nSorry, that is not a valid option. Please try again.\n")
+
+
 
     def vault(key = None):
         rod = [0,0,0,0]
@@ -53,9 +56,9 @@ class options:
         print("There's an expensive-looking rug running along the floor and a surprising lack")
         print("of vandalism, despite the door not being locked. There is a small table on one side")
         print("and a painting on the other. There is also one door leading further into the house.")
-        options.entryway_2(options.used_attic_key)
+        options.entryway_2()
 
-    def entryway_2(used):
+    def entryway_2():
         print("\nAs far as you can tell, there are three options:\n")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
@@ -63,12 +66,12 @@ class options:
         print("D. Leave the house")
         choice = input("\nWhat would you like to do?: ")        
         
-        if choice.lower() == "a" and used == False:
+        if choice.lower() == "a" and options.used_entryway == False:
             print("\nYou decide to investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it.")
             options.entryway_key("2")
         
-        elif choice.lower() == "a" and used:
+        elif choice.lower() == "a" and options.used_entryway:
             print("\nYou open the drawer on the table.")
             print("It is empty. You close it and turn back to the room.")
             options.entryway_3("a")
@@ -86,7 +89,7 @@ class options:
         elif choice.lower() == "d":
             print("\nYou try the doorknob. Locked. Looks like you're stuck here.")
             print("You turn back around.")
-            options.entryway_2(used)
+            options.entryway_2()
 
         else:
             options.try_again()
@@ -127,7 +130,7 @@ class options:
             options.entryway_3(used)
 
     def entryway_key(where):
-        choice = input("\nDo you want to pocket the key? Y/N: ")
+        choice = input("\nDo you want to take the key? Y/N: ")
         if choice.lower() == "y":
             print("\nYou pocket the key.")
             options.inventory.append(items.attic_key)
@@ -176,7 +179,7 @@ class options:
             options.stairs("up")
         elif choice.lower() == "e":
             print("\nYou turn around and head back through the door.")
-            options.entryway_2(options.used_attic_key)
+            options.entryway_2()
         else:
             options.try_again()
             options.foyer_2()
@@ -265,8 +268,7 @@ class options:
             options.living_room_2()
         
 
-    #Add alternate dialogue for when you have already used the key on the box.
-    #Add alternate dialogue for when you have already used the old gear on the globe.
+
     def office():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
         print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -282,15 +284,21 @@ class options:
         if choice.lower() == "a":
             print("\nThe desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
-            options.desk()
+            options.desk(options.used_pen)
 
         elif choice.lower() == "b":
-            if items.old_gear in options.inventory:
+            if options.used_old_gear:
+                print("\nYou look into the globe, noticing that the gears are still turning without any action on your part.")
+                print("Shrugging, you turn back to the room.")
+                options.office_2()
+            
+            elif items.old_gear in options.inventory:
                 print("\nYou fish the old gear out of your pocket and place it firmly in the hidden compartment of the globe.")
                 print("Without any futher action on your part, the gears inexplicably move on their own.")
                 print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
                 options.inventory.remove(items.old_gear)
                 options.vault(items.old_gear["Item name"])
+                options.used_old_gear = True
                 print("You turn back to the room.")
                 options.office_2()
             else:
@@ -309,55 +317,63 @@ class options:
             options.office_2()
 
     def desk():
-        print("What do you want to do?")
-        print("A. Look at the pen")
-        print("B. Look at the box")
-        choice = input()
+        if options.used_pen:
+            print("\nYou look at the box with the key sticking out of it.")
+            print("There's really nothing else you can do about it.")
+            print("You turn back to the room.")
+            options.office_2()
+        else:
+            print("What do you want to do?")
+            print("A. Look at the pen")
+            print("B. Look at the box")
+            choice = input()
 
-        if choice.lower() == "a":
-            print("You look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a fancy feather on it.")
-            print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
-            print("You glance at the box with the carving of a crane on it.")
+            if choice.lower() == "a":
+                print("You look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a fancy feather on it.")
+                print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
+                print("You glance at the box with the carving of a crane on it.")
 
-            print("\nDo you want to use the key on the box? Y/N: ")
-            choice_2 = input()
+                print("\nDo you want to use the key on the box? Y/N: ")
+                choice_2 = input()
             
-            if choice_2.lower() == "y":
-                print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
-                print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
-                print("Somewhere in the house, you hear a loud thud, then silence.")
-                options.inventory.remove(items.pen)
-                options.vault(items.pen["Item name"])
-                print("You turn back to the room.")
-                options.office_2()
+                if choice_2.lower() == "y":
+                    print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
+                    print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+                    print("Somewhere in the house, you hear a loud thud, then silence.")
+                    options.inventory.remove(items.pen)
+                    options.vault(items.pen["Item name"])
+                    options.used_pen = True
+                    print("You turn back to the room.")
+                    options.office_2()
             
-            elif choice_2.lower() == "n":
-                print("\nYou put the key in your pocket.")
-                options.inventory.append(items.pen)
-                options.desk()
+                elif choice_2.lower() == "n":
+                    print("\nYou put the key in your pocket.")
+                    options.inventory.append(items.pen)
+                    options.desk()
 
+                else:
+                    options.try_again()
+                    options.desk()
+                
+            elif choice.lower() == "b":
+                if items.pen in options.inventory:
+                    print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
+                    print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+                    print("Somewhere in the house, you hear a loud thud, then silence.")
+                    options.inventory.remove(items.pen)
+                    options.vault(items.pen["Item name"])
+                    options.used_pen = True
+                    print("You turn back to the room.")
+                    options.office_2()
+                else:
+                    print("You examine the box closely. It appears to have a keyhole in the front and is lined with gold trim around the lid of the box.")
+                    print("The box is currently locked and cannot be opened.")
+                    print("You turn back to the room.")
+                    options.office_2()
+        
             else:
                 options.try_again()
                 options.desk()
-                
-        elif choice.lower() == "b":
-            if items.pen in options.inventory:
-                print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
-                print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
-                print("Somewhere in the house, you hear a loud thud, then silence.")
-                options.inventory.remove(items.pen)
-                options.vault(items.pen["Item name"])
-                print("You turn back to the room.")
-                options.office_2()
-            else:
-                print("You examine the box closely. It appears to have a keyhole in the front and is lined with gold trim around the lid of the box.")
-                print("The box is currently locked and cannot be opened.")
-                print("You turn back to the room.")
-                options.office_2()
-        
-        else:
-            options.try_again()
-            options.desk()
 
 
 
