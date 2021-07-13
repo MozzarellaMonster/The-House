@@ -114,16 +114,17 @@ class options:
 
     def foyer():
         print("\nIn front of you lies a dimly lit foyer, stairs go up on the right, to the left there is a")
-        print("swinging door, to the right just before the stairs there is another door, and forward there is a dark hallway.")
+        print("swinging door that looks like it leads to a living room, to the right just before the stairs there")
+        print("is another door that looks like it goes into an office, and lastly there is a dark hallway.")
         options.foyer_2()
 
     def foyer_2():
         print("\nWhich area would you like to explore?")
-        print("A. Go through the left door")
-        print("B. Go forward into the hallway")
-        print("C. Go through the right door")
+        print("A. Go into the living room")
+        print("B. Go into the hallway")
+        print("C. Go into the office")
         print("D. Go up the stairs")
-        print("E. Go back through the door.")
+        print("E. Go back through the door")
         choice = input()
 
         if choice.lower() == "a":
@@ -244,7 +245,7 @@ class options:
         if choice.lower() == "a":
             print("\nThe desk itself has several drawers, two of which are empty. The main drawer only has a single pen inside it and the bottom left drawer ")
             print("has a locked box with the emblem of a crane on it.")
-            options.desk(options.used_pen)
+            options.desk()
 
         elif choice.lower() == "b":
             if options.used_old_gear:
@@ -276,6 +277,7 @@ class options:
             options.try_again()
             options.office_2()
 
+    #Finalize this
     def desk():
         if options.used_pen:
             print("\nYou look at the box with the key sticking out of it.")
@@ -289,36 +291,15 @@ class options:
             print("B. Look at the box")
             choice = input()
 
-            if choice.lower() == "a" and options.taken_pen:
-                print("\nYou take the pen out of your pocket and look at it.")
-                print("Feeling silly, you put it back in your pocket.")
-                options.desk()
-
-            elif choice.lower() == "a":
+            if choice.lower() == "a":
                 print("\nYou look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a fancy feather on it.")
                 print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
-                print("You glance at the box with the carving of a crane on it.")
-                print("\nDo you want to use the key on the box? Y/N: ")
-                choice_2 = input()
-            
-                if choice_2.lower() == "y":
-                    options.box()
-                    options.office_2()
-            
-                elif choice_2.lower() == "n":
-                    print("\nYou put the key in your pocket.")
-                    options.taken_pen = True
-                    options.inventory.append(items.pen)
-                    options.desk()
-
-                else:
-                    options.try_again()
-                    options.desk()
+                options.pen()
                 
             elif choice.lower() == "b":
-                if items.pen in options.inventory:
+                if options.taken_pen and items.pen in options.inventory:
                     options.box()
-                    options.office_2()
+
                 else:
                     print("\nYou examine the box closely. It appears to have a keyhole in the front and is lined with gold trim around the lid of the box.")
                     print("The box is currently locked and cannot be opened.")
@@ -329,13 +310,46 @@ class options:
                 options.try_again()
                 options.desk()
 
+    def pen():
+        choice = input ("\nDo you want to take the pen? Y/N: ")
+        
+        if choice.lower() == "y":
+            print("\nYou close the pen and put it in your pocket.")
+            options.inventory.append(items.pen)
+            options.taken_pen = True
+            print("You turn back to the room.")
+            options.office_2()
+
+        elif choice.lower() == "n":
+            print("You leave the pen alone and turn back to the room.")
+            options.office_2()
+
+        else:
+            options.try_again()
+            options.pen()
+            
     def box():
-        print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
-        print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
-        print("Somewhere in the house, you hear a loud thud, then silence.")
-        options.inventory.remove(items.pen)
-        options.used_pen = True
-        print("You turn back to the room.")
+        choice = input("\nDo you want to use the pen key on the box? Y/N: ")
+            
+        if choice.lower() == "y":
+            print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
+            print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+            print("Somewhere in the house, you hear a loud thud, then silence.")
+            options.inventory.remove(items.pen)
+            options.used_pen = True
+            print("You turn back to the room.")
+            options.office_2()
+           
+        elif choice.lower() == "n":
+            print("\nYou leave the box alone and turn back to the room.")
+            options.office_2()
+
+        else:
+            options.try_again()
+            options.box()
+
+
+        
 
 
 
@@ -389,10 +403,12 @@ class options:
             print("\nYou bend down and look into the broken cabinet.")
             print("It's empty, you stand back up and look turn to the room.")
             options.kitchen_2()
+
         elif choice.lower() == "a":
             print("\nYou bend down and look deeper into the broken cabinet.")
             print("It is a silver, decorative dagger.")
             options.kitchen_cabinet()
+
         elif choice.lower() == "b":
             print("\nYou open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
             print("An awful smell hits you and close the door immediately.")
@@ -428,7 +444,6 @@ class options:
 
 
     def basement():
-
         if items.flashlight in options.inventory and options.vault():
             print("\nHaving put different items back in their proper places or simply flicking a switch, you have unknowingly opened the basement vault.")
             print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
@@ -458,13 +473,13 @@ class options:
             print("You slowly approach the slab and note its resemblance to a large vault door.")
             print("You examine it closely and notice there are four large metal bolts keeping the slab in place.")
             print("With nothing else of interest in the basement, you decide to leave.")
-            options.hallway()
+            options.hallway_2()
             
         else:
             print("\nThe stairs creak as you make your way down into the basement, the aged wood threatening to give out from under you.")
             print("As you reach the bottom of the stairs, complete darkness welcomes you. A faint pitter-patter of water can be heard from somewhere in the basement.")
             print("You reach out blindly, hoping to find a light switch or a pull cord. Finding none, you make your way back up the stairs.")
-            options.hallway()
+            options.hallway_2()
 
 
 
@@ -476,9 +491,10 @@ class options:
             print("You reach the top of the stairs.")
             options.first_stairs = False
             options.upper_hallway()
+
         elif direction == "up":
             print("\nYou head up the stairs.")
-            options.upper_hallway()
+            options.upper_hallway_2()
         else:
             print("\nYou head down the stairs.")
             options.foyer_2()
@@ -488,12 +504,15 @@ class options:
     def upper_hallway():
         print("\nYou look around the upstairs hallway and immediately notice three doors.")
         print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another appears to lead to the attic.")
+        options.upper_hallway_2()
+
+    def upper_hallway_2():
         print("\nWhich room would you like to explore?")
         print("A. Bathroom")
         print("B. Bedroom")
         print("C. Attic")
         print("D. Leave the hallway")
-        choice = input("\n")
+        choice = input()
         
         if choice.lower() == "a":
             options.bathroom()
@@ -523,7 +542,7 @@ class options:
         options.bathroom_mirror()
     
     def bathroom_mirror():
-        choice = input("Look closer at the mirror? Y/N: ")
+        choice = input("\nLook closer at the mirror? Y/N: ")
         
         if choice.lower() == "y":
             print("\nYou look at the mirror and examine it closely, staring into your reflection's eyes.")
@@ -546,7 +565,7 @@ class options:
         elif choice.lower() == "n":
             print("\nYou shudder a bit at the creepy sensation, but decide not to look closer at the mirror.")
             print("You turn and leave the bathroom.")
-            options.upper_hallway()
+            options.upper_hallway_2()
 
         else:
             options.try_again()
@@ -597,11 +616,16 @@ class options:
         
         elif choice.lower() == "d":
             print("\nYou decide to leave the bedroom.")
-            options.upper_hallway()
+            options.upper_hallway_2()
+        
+        else:
+            options.try_again()
+            options.bedroom_2()
         
     def wardrobe():
         if options.used_wardrobe_switch:
             print("\nYou look into the wardrobe, but there's nothing new here.")
+            print("The switch is still flipped, at least.")
             print("You turn back to the room.")
             options.bedroom_2()
 
@@ -615,18 +639,21 @@ class options:
             elif choice.lower() == "n":
                 print("\nYou decide to leave the switch alone and turn back to the room.")
                 options.bedroom_2()
+            else:
+                options.try_again()
+                options.wardrobe()
 
 
 
     def attic():
         print("\nYou head up the short staircase and poke your head into the dark gloom of the attic.")
-        print("Surprisingly, the attic is quite empty save for an old safe that leaning against one wall of the dusty room.")
+        print("Surprisingly, the attic is quite empty save for an old safe that's leaning against one wall of the dusty room.")
         print("Seeing no other option, you head up to the old safe.")
 
         if options.used_attic_key or options.taken_old_gear:
             print("\nYou look into the empty safe, then around the attic.")
             print("There is nothing new, so you head back down the stairs.")
-            options.upper_hallway()
+            options.upper_hallway_2()
 
         elif items.attic_key in options.inventory:
             print("\nYou notice that unique ellipse shape on the door of the safe from that key you picked up earlier in the foyer.")
@@ -639,11 +666,11 @@ class options:
             options.inventory.append(items.old_gear)
             options.taken_old_gear = True
             print("You close the old safe and head out of the attic.")
-            options.upper_hallway()
+            options.upper_hallway_2()
 
         else:
             print("\nYou notice that there's a unique ellipse shape on the door.")
             print("It seems somewhat familiar...")
             print("Unfortunately, you cannot do any more with the safe at this time.")
             print("You make your way back down the short staircase.")
-            options.upper_hallway()
+            options.upper_hallway_2()
