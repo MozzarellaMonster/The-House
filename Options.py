@@ -4,8 +4,9 @@ class options:
 
     inventory = []
     first_stairs = True
-    used_entryway = False
+    taken_attic_key = False
     used_attic_key = False
+    taken_silver_dagger = False
     used_silver_dagger = False
     used_old_gear = False
     used_pen = False
@@ -66,12 +67,12 @@ class options:
         print("D. Leave the house")
         choice = input("\nWhat would you like to do?: ")        
         
-        if choice.lower() == "a" and options.used_entryway == False:
+        if choice.lower() == "a" and options.taken_attic_key == False:
             print("\nYou decide to investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it.")
             options.entryway_key("2")
         
-        elif choice.lower() == "a" and options.used_entryway:
+        elif choice.lower() == "a" and options.taken_attic_key:
             print("\nYou open the drawer on the table.")
             print("It is empty. You close it and turn back to the room.")
             options.entryway_3("a")
@@ -134,7 +135,7 @@ class options:
         if choice.lower() == "y":
             print("\nYou pocket the key.")
             options.inventory.append(items.attic_key)
-            options.used_entryway = True
+            options.taken_attic_key = True
             if where == "2":
                 options.entryway_3("a")
             elif where == "3":
@@ -420,7 +421,7 @@ class options:
         print("C. Go back into the hallway")
         choice = input("\n")
 
-        if choice.lower() == "a" and options.used_silver_dagger:
+        if choice.lower() == "a" and options.taken_silver_dagger:
             print("\nYou bend down and look into the broken cabinet.")
             print("It's empty, you stand back up and look turn to the room.")
             options.kitchen_2()
@@ -451,7 +452,7 @@ class options:
             print("\n\nYou pick up the dagger. The cold heavy knife weighs on your hand and fills you with a small sense of dread.")
             print("You quickly put the item away and turn back to the kitchen.")
             options.inventory.append(items.silver_dagger)
-            options.used_silver_dagger = True
+            options.taken_silver_dagger = True
             options.kitchen_2()
         elif pick_up.lower() == "n":
             print("\nYou decide to leave the dagger alone and get back up.")
