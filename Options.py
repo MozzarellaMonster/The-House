@@ -236,6 +236,7 @@ class options:
                 print("in the display case. Carefully, you set the knife into the case, making sure not to cut the")
                 print("leather strap that holds the knife in place.")
                 print("Somewhere in the house, you hear a large thunk, then silence.")
+                options.inventory.remove(items.silver_dagger)
                 options.vault(items.silver_dagger["Item name"])
                 options.used_silver_dagger = True
                 print("You turn back to the room.")
@@ -264,7 +265,8 @@ class options:
             options.living_room_2()
         
 
-
+    #Add alternate dialogue for when you have already used the key on the box.
+    #Add alternate dialogue for when you have already used the old gear on the globe.
     def office():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have ")
         print("power connected to it. A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -287,6 +289,7 @@ class options:
                 print("\nYou fish the old gear out of your pocket and place it firmly in the hidden compartment of the globe.")
                 print("Without any futher action on your part, the gears inexplicably move on their own.")
                 print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
+                options.inventory.remove(items.old_gear)
                 options.vault(items.old_gear["Item name"])
                 print("You turn back to the room.")
                 options.office_2()
@@ -323,6 +326,7 @@ class options:
                 print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
                 print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
                 print("Somewhere in the house, you hear a loud thud, then silence.")
+                options.inventory.remove(items.pen)
                 options.vault(items.pen["Item name"])
                 print("You turn back to the room.")
                 options.office_2()
@@ -341,6 +345,7 @@ class options:
                 print("\nYou insert the pen key into the key hole on the crane box and give it a twist.")
                 print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
                 print("Somewhere in the house, you hear a loud thud, then silence.")
+                options.inventory.remove(items.pen)
                 options.vault(items.pen["Item name"])
                 print("You turn back to the room.")
                 options.office_2()
@@ -566,7 +571,8 @@ class options:
             options.bathroom_mirror()
 
 
-
+    #Add alternate dialogue for when the player returns after flipping the wardrobe switch.
+    #Add alternate dialgoue for when the player has already taken the flashlight.
     def bedroom():
         print("\nYou choose to explore the bedroom.")
         print("You make your way into the bedroom and admire the stunning mahogany four-poster bed the takes up the majority of the space.")
@@ -615,7 +621,7 @@ class options:
             print("\nYou decide to leave the switch alone and turn back to the room.")
             options.bedroom_2()
 
-    
+    #Add alternate dialogue for when the player returns without the attic key.
     def attic():
         print("\nYou head up the short staircase and poke your head into the dark gloom of the attic.")
         print("Surprisingly, the attic is quite empty save for an old safe that leaning against one wall of the dusty room.")
@@ -627,6 +633,7 @@ class options:
             print("You slowly twist the key and hear a satisfying click.")
             print("You creak open the old safe's door. Inside, you find a dusty old gear.")
             print("You add it to your backpack.")
+            options.inventory.remove(items.attic_key)
             options.inventory.append(items.old_gear)
             print("You close the old safe and head out of the attic.")
             options.upper_hallway()
