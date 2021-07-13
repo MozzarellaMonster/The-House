@@ -56,7 +56,7 @@ class options:
         options.entryway_2()
 
     def entryway_2():
-        print("What would you like to do?:")
+        print("\nWhat would you like to do?:")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
@@ -643,4 +643,4 @@ class options:
             print("It seems somewhat familiar...")
             print("Unfortunately, you cannot do any more with the safe at this time.")
             print("You make your way back down the short staircase.")
-            options.attic()
+            options.upper_hallway()
