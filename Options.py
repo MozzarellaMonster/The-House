@@ -342,6 +342,9 @@ class options:
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms. One is obviously the kitchen,")
         print("the other appears to be the basement.")
+        options.hallway_2()
+    
+    def hallway_2():
         print("\nWhat would you like to do?")
         print("A. Go into the kitchen")
         print("B. Head down into the basement")
@@ -357,12 +360,12 @@ class options:
             options.basement()
 
         elif choice.lower() == "c":
-            print("\nYou turn around and head back into the foyer.")
+            print("\nYou head back into the foyer.")
             options.foyer_2()
 
         else:
             options.try_again()
-            options.hallway()            
+            options.hallway_2()            
 
 
 
@@ -402,7 +405,7 @@ class options:
 
         elif choice.lower() == "c":
             print("\nYou turn around and go back into the hallway.")
-            options.hallway()
+            options.hallway_2()
         else:
             options.try_again()
             options.kitchen()
