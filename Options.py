@@ -56,31 +56,31 @@ class options:
         options.entryway_2()
 
     def entryway_2():
-        print("\nAs far as you can tell, there are three options:\n")
+        print("What would you like to do?:")
         print("A. Investigate the table.")
         print("B. Investigate the painting.")
         print("C. Go through the door.")
         print("D. Leave the house")
-        choice = input("\nWhat would you like to do?: ")
+        choice = input()
         
         if choice.lower() == "a" and options.taken_attic_key:
             print("\nYou open the drawer on the table.")
             print("It is empty. You close it and turn back to the room.")
-            options.entryway_3("a")
+            options.entryway_2()
         
         elif choice.lower() == "a":
             print("\nYou decide to investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it.")
-            options.entryway_key("2")
+            options.entryway_key()
             
         elif choice.lower() == "b":
             print("\nYou investigate the painting. It is a self-portait of a very stern-looking man with")
-            print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
-            print("about it.")
-            options.entryway_3("b")
+            print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting about it.")
+            print("You turn back to the room.")
+            options.entryway_2()
 
         elif choice.lower() == "c":
-            print("\nYou go through the door and make your way further inside...\n")
+            print("\nYou go through the door and make your way further inside.")
             options.foyer()
         
         elif choice.lower() == "d":
@@ -92,55 +92,19 @@ class options:
             options.try_again()
             options.entryway_2()
 
-    def entryway_3(used, done = False):
-        print("You turn back to the room.")
-        if used == "a":
-            print("\nThere are now two options left, you can either look at the painting or")
-            print("you can go through the door, which would you like to do?")
-            print("1. Look at the painting")
-            print("2. Go through the door")
-            choice_2 = input()
-
-        elif used == "b":
-            print("\nThere are now two options left, you can either investigate the table or")
-            print("you can go through the door, which would you like to do?")
-            print("A. Investigate the table")
-            print("B. Go through the door")
-            choice_2 = input()
-            
-        if choice_2 == "1":
-            print("\nYou investigate the painting. It is a self-portait of a very stern-looking man with")
-            print("a large handlebar mustache and piercing blue eyes. There is otherwise nothing interesting")
-            print("about it.\n")
-            done = True
-
-        elif choice_2.lower() == "a":
-            print("\nYou investigate the table and notice it has only one drawer. You open it.")
-            print("Inside, you find a single key with a decorative ellipse on it.")
-            options.entryway_key("3")
-
-        if choice_2 == "2" or choice_2.lower() == "b" or done:
-            print("\nYou go through the door and make your way further inside...\n")
-            options.foyer()
-        else:
-            options.try_again()
-            options.entryway_3(used)
-
-    def entryway_key(where):
+    def entryway_key():
         choice = input("\nDo you want to take the key? Y/N: ")
+        
         if choice.lower() == "y":
-            print("\nYou pocket the key.")
+            print("\nYou put the key in your pocket.")
             options.inventory.append(items.attic_key)
             options.taken_attic_key = True
-            if where == "2":
-                options.entryway_3("a")
-            elif where == "3":
-                print("\nYou leave the room.")
-                options.foyer()
+            print("You turn back to the room.")
+            options.entryway_2()
                 
         elif choice.lower() == "n":
-            print("\nYou leave the key alone.")
-            options.entryway_3("a")
+            print("\nYou leave the key alone and turn back to the room.")
+            options.entryway_2()
                 
         else:
             options.try_again()
@@ -160,19 +124,19 @@ class options:
         print("C. Go through the right door")
         print("D. Go up the stairs")
         print("E. Go back through the door.")
-        choice = input("")
+        choice = input()
 
         if choice.lower() == "a":
-            print("\nYou have chosen to go through the left door. It creaks open...")
+            print("\nYou have chosen to go through the left door.")
             options.living_room()
         elif choice.lower() == "b":
-            print("\nYou have chosen to go forward into the hallway. You step forward...")
+            print("\nYou have chosen to go forward into the hallway.")
             options.hallway()
         elif choice.lower() == "c":
-            print("\nYou have chosen to go through the right door. You turn the knob...")
+            print("\nYou have chosen to go through the right door.")
             options.office()
         elif choice.lower() == "d":
-            print("\nYou have chosen to go up the stairs. You grip the banister and take the first step...")
+            print("\nYou have chosen to go up the stairs.")
             options.stairs("up")
         elif choice.lower() == "e":
             print("\nYou turn around and head back through the door.")
