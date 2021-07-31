@@ -20,6 +20,8 @@ class options:
     taken_flashlight = False
     used_wardrobe_switch = False
         
+    bolts = 0
+
     def try_again():
         print("\nSorry, that is not a valid option. Please try again.\n")
 
@@ -154,7 +156,7 @@ class options:
         options.foyer_2()
 
     def foyer_2():
-        print("\nWhich area would you like to explore?")
+        print("\nWhat would you like to do?")
         print("A. Go into the living room")
         print("B. Go into the hallway")
         print("C. Go into the office")
@@ -182,7 +184,7 @@ class options:
             options.foyer_2()
 
 
-
+    #Fix to account for getting the knife ahead of investigating the display box.
     def living_room():
         print("\nThe left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.")
         print("There are several things about this room that intrigue you.")
@@ -202,7 +204,8 @@ class options:
         if choice.lower() == "a":
             print("\nYou go to the bookshelf and look over the old tomes on the shelf.")
             print("Aside from noticing the majority of them are mystery and thrillers, nothing really stands out about them.")
-            print("You turn back to the room.")
+            print("You give some of them an experimental tug, expecting a cliche hidden room to open, but nothing happens.")
+            print("You shrug and turn back to the room.")
             options.living_room_2()
             
         elif choice.lower() == "b":
@@ -239,6 +242,7 @@ class options:
                 print("Somewhere in the house, you hear a large thunk, then silence.")
                 options.inventory.remove(items.silver_dagger)
                 options.used_silver_dagger = True
+                options.bolts += 1
                 print("You turn back to the room.")
                 options.living_room_2()
 
@@ -250,7 +254,7 @@ class options:
 
             else:
                 print("\nYou walk up to the display case and brush away the dust collected on the glass lid.")
-                print("It's empty. Figures, maybe some looters took whatever valuable thing may have been inside?")
+                print("It's empty. Perhaps some looters had stolen whatever was inside before.")
                 print("You look closer and notice several leather straps and the faint impression of a dagger in the velvet cushion of the case.")
                 print("It appears that the leather straps hold the dagger in place. Interesting.")
                 print("You turn back to the room.")
@@ -265,7 +269,7 @@ class options:
             options.living_room_2()
         
 
-
+    #Fix to account for getting the gear before inspecting the globe - flavor text.
     def office():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have power connected to it.")
         print("A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -283,7 +287,6 @@ class options:
             print("The desk and its contents are otherwise unchanged.")
             print("You turn back to the room.")
             options.office_2()
-
         
         elif choice.lower() == "a":
             print("\nThe desk itself has several drawers, two of which are empty.")
@@ -302,6 +305,7 @@ class options:
                 print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
                 options.inventory.remove(items.old_gear)
                 options.used_old_gear = True
+                options.bolts += 1
                 print("You turn back to the room.")
                 options.office_2()
 
@@ -322,7 +326,7 @@ class options:
             options.office_2()
 
     
-
+    #Fix to account for looking at the box with the key in your inventory without having looked at the box previously.
     def desk():
         if options.used_pen:
             print("\nYou look at the box with the key sticking out of it.")
@@ -331,18 +335,18 @@ class options:
             options.office_2()
 
         else:
-            print("\nWhat do you want to do?")
+            print("\nWhat would you like to do?")
             print("A. Look at the pen")
             print("B. Look at the box")
             choice = input()
 
             if choice.lower() == "a" and options.taken_pen:
                 print("\nYou take the pen out of your pocket and look at it.")
-                print("Feeling silly, you put the pen back and turn back to the room.")
+                print("Feeling silly, you put the pen back and turn your attention back to the desk.")
                 options.desk()
             
             elif choice.lower() == "a":
-                print("\nYou look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a fancy feather on it.")
+                print("\nYou look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a feather on it.")
                 print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
                 options.pen()
                 
@@ -387,6 +391,7 @@ class options:
             print("Somewhere in the house, you hear a loud thud, then silence.")
             options.inventory.remove(items.pen)
             options.used_pen = True
+            options.bolts += 1
             print("You turn back to the room.")
             options.office_2()
            
@@ -399,7 +404,7 @@ class options:
             options.box()
 
 
-
+    #Add flavor text to upper hallway.
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms.")
         print("One is obviously the kitchen, the other appears to be the basement.")
@@ -458,12 +463,14 @@ class options:
             options.kitchen_cabinet()
 
         elif choice.lower() == "b":
-            print("\nYou open the refrigerator door. It's full of mold. Mold is growing around the entirety of the space inside.")
-            print("An awful smell hits you and close the door immediately.")
-            print("You immediately start to itch all over your body. You look down and scream.")
+            print("\nYou open the refrigerator door. It's full of mold, mold that is growing around the entirety of the space inside.")
+            print("Suddenly, spores are violently expelled toward you.")
+            print("You splutter and fall backward, desperately trying to rub away the spores in your eyes.")
+            print("You immediately start to itch all over your body. You look down with teary eyes and scream.")
             print("Small, moldy growths are appearing all over your body. You scratch and scratch, but the itch won't go away.")
-            print("Mold soon covers your entire body and you find it hard to breathe as spores fill your lungs.")
-            print("You collapse as your final breath leaves you.")
+            print("You scratch so hard that you draw blood, allowing the mold to spread even faster.")
+            print("Mold soon covers your entire body and you find it hard to breathe as the spores fill your lungs.")
+            print("You slowly lose sensation in your body as a cold numbness replaces the itch and the world fades to black.")
             print("GAME OVER: Ending 3: Rot")
             options.retry()
 
@@ -495,18 +502,19 @@ class options:
         if items.flashlight in options.inventory and options.vault():
             print("\nHaving put different items back in their proper places or simply flicking a switch, you have unknowingly opened the basement vault.")
             print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
-            print("Underneath you spy something strange. It looks like some type of machine, though not one you've ever seen before.")
-            print("There is a large stone ring with strange glyphs carved into it. Oddly, the glyphs appear to be glowing rather faintly.")
+            print("Underneath you spy something strange. It looks like some type of machine, though not a type you've ever seen before.")
+            print("There is a large stone ring with strange glyphs carved into it. Oddly, the glyphs appear to be glowing faintly.")
             print("The ring is held in place by large brackets on the machine. Several glowing buttons appear in a grid to the right of the stone ring.")
             print("Each of the buttons are numbered, 1 - 9, with a small screen directly above the grid of buttons.")
             print("You stare at the machine in confusion, not daring to touch anything for fear of what might happen.")
             print("You hastily get up, intent on leaving the machine be. This might be a good chance to get something for the newspaper, however.")
             print("You fish your phone out of your pocket, intent on taking a picture of the machine. Howvever, your car keys come along with it.")
             print("The keys fall out of reach and hit several buttons on the machine. The stone ring glows brighter and a strange, opaque liquid shimmer appears in the center of the ring.")
-            print("You quickly grab the keys and turn to leave, but are soon stopped by a blinding flash of light directly behind you.")
-            print("You take a few moments to gather your senses, and soon your eyes adjust to see that you are now standing in front of several trees.")
+            print("You quickly grab the keys and turn to leave, but are soon stunned by a blinding flash of light as an energy pulse erupts directly behind you.")
+            print("You topple over as the world swirls around you. You can't tell if it's just your perception or if the world is actually swirling.")
+            print("You take a few moments to gather your senses, and soon your eyes adjust to see that you are now standing in a clearing surrounded by trees.")
             print("You spin around, looking around for the familiar concrete walls of the basement, but find nothing but more trees.")
-            print("You look up into the pale blue sky, several clouds drifting lazily about, unaware of your current predicament.")
+            print("You look up into the pale blue sky, but only see several clouds drifting lazily about, unaware of your current predicament.")
             print("You take out your phone, intent on calling for help, but find you have no signal. You look about helplessly.")
             print("The trees look like those found in some jungle, and now that you're paying more attention, you hear several bizarre animal calls.")
             print("You look back down at the phone and pull up your compass app. It spins around uselessly. You put it back in your pocket.")
@@ -520,7 +528,7 @@ class options:
             print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
             print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
             print("You slowly approach the slab and note its resemblance to a large vault door.")
-            print("You examine it closely and notice there are four large metal bolts keeping the slab in place.")
+            print("You examine it closely and notice there are " + (4 - options.bolts) + " large metal bolts keeping the slab in place.")
             print("With nothing else of interest in the basement, you decide to leave.")
             options.hallway_2()
             
@@ -556,10 +564,10 @@ class options:
         options.upper_hallway_2()
 
     def upper_hallway_2():
-        print("\nWhich room would you like to explore?")
-        print("A. Bathroom")
-        print("B. Bedroom")
-        print("C. Attic")
+        print("\nWhat would you like to do?")
+        print("A. Go into the bathroom")
+        print("B. Go into the bedroom")
+        print("C. Go into the attic")
         print("D. Leave the hallway")
         choice = input()
         
@@ -583,7 +591,7 @@ class options:
     def bathroom():
         print("\nYou choose to explore the bathroom.")
         print("There is also a dirty toilet with a broken commode and no lid. Thankfully, it is dry and... unused.")
-        print("There is also a shower with a missing showerhead. A few shower curtain rings hang from a crooked shower rod. There is no shower curtain anywhere.")
+        print("There is also a shower with a missing showerhead. A few shower curtain rings hang from a crooked shower rod. The shower curtain is nowhere to be found.")
         print("Afterward, you notice the dirty and stained mirror. It is shattered in the lower righthand corner.")
         print("Several shards of glass rest in the sink basin.")
         print("Out of the corner of your eye, you notice something move in the mirror.")
@@ -631,10 +639,10 @@ class options:
         options.bedroom_2()
 
     def bedroom_2():
-        print("\nWhich would you like to choose?")
-        print("A. Dresser")
-        print("B. Trunk")
-        print("C. Wardrobe")
+        print("\nWhat would you like to do?")
+        print("A. Investigate the dresser")
+        print("B. Investigate the trunk")
+        print("C. Investigate the wardrobe")
         print("D. Leave the bedroom")
         choice = input()
 
@@ -684,6 +692,7 @@ class options:
             if choice.lower() == "y":
                 print("\nYou flip the switch and almost immediately hear a loud thunk somewhere in the house.")
                 options.used_wardrobe_switch = True
+                options.bolts += 1
                 print("You turn back to the room.")
                 options.bedroom_2()
             elif choice.lower() == "n":
@@ -694,7 +703,7 @@ class options:
                 options.wardrobe()
 
 
-
+    #Add more interactivity to the attic, allowing the player to choose to take the gear or not.
     def attic():
         print("\nYou head up the short staircase and poke your head into the dark gloom of the attic.")
         print("Surprisingly, the attic is quite empty save for an old safe that's leaning against one wall of the dusty room.")
