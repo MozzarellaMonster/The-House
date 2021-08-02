@@ -4,6 +4,12 @@ class options:
 
     inventory = []
     first_stairs = True
+    first_foyer = True
+
+    investigated_display_case = False
+    investigated_box = False
+    investigated_globe = False
+    investigated_safe = False
 
     taken_attic_key = False
     used_attic_key = False
@@ -149,11 +155,15 @@ class options:
 
 
     def foyer():
-        print("\nIn front of you lies a dimly lit foyer with stairs running up on the right.")
-        print("To the left there is a swinging door that looks like it leads to a living room.")
-        print("To the right just before the stairs there is another door that looks like it goes into an office.")
-        print("And lastly, there is a dark hallway leading further into the house.")
-        options.foyer_2()
+        if options.first_foyer:
+            print("\nIn front of you lies a dimly lit foyer with stairs running up on the right.")
+            print("To the left there is a swinging door that looks like it leads to a living room.")
+            print("To the right just before the stairs there is another door that looks like it goes into an office.")
+            print("And lastly, there is a dark hallway leading further into the house.")
+            options.first_foyer = False
+            options.foyer_2()
+        else:
+            options.foyer_2()
 
     def foyer_2():
         print("\nWhat would you like to do?")
@@ -184,7 +194,7 @@ class options:
             options.foyer_2()
 
 
-    #Fix to account for getting the knife ahead of investigating the display box.
+    
     def living_room():
         print("\nThe left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.")
         print("There are several things about this room that intrigue you.")
@@ -236,10 +246,22 @@ class options:
                 options.living_room_2()
 
         elif choice.lower() == "c":
-            if items.silver_dagger in options.inventory:
+            if items.silver_dagger in options.inventory and options.investigated_display_case:
                 print("\nYou pull out the silver dagger you found in the kitchen and line it up with the impression in the display case.")
                 print("Carefully, you set the knife into the case, making sure not to cut the leather strap that holds the knife in place.")
-                print("Somewhere in the house, you hear a large thunk, then silence.")
+                print("Somewhere in the house, you hear a loud thunk, then silence.")
+                options.inventory.remove(items.silver_dagger)
+                options.used_silver_dagger = True
+                options.bolts += 1
+                print("You turn back to the room.")
+                options.living_room_2()
+            
+            elif items.silver_dagger in options.inventory and options.investigated_display_case == False:
+                print("\nYou walk up to the display case, wiping dust off the glass lid. You open the display case, the hinges creaking as you lift the lid.") 
+                print("Inside there is an impression of the dagger you found in the kitchen in the velvet cushion within the case.")
+                print("You notice there are also leather straps intended to hold the dagger in place.")
+                print("You take out the dagger and carefully set it into the case, securing the leather straps around it.")
+                print("Somewhere in the house, you hear a loud thunk, then silence.")
                 options.inventory.remove(items.silver_dagger)
                 options.used_silver_dagger = True
                 options.bolts += 1
@@ -258,6 +280,7 @@ class options:
                 print("You look closer and notice several leather straps and the faint impression of a dagger in the velvet cushion of the case.")
                 print("It appears that the leather straps hold the dagger in place. Interesting.")
                 print("You turn back to the room.")
+                options.investigated_display_case = True
                 options.living_room_2()
         
         elif choice.lower() == "d":
@@ -269,7 +292,7 @@ class options:
             options.living_room_2()
         
 
-    #Fix to account for getting the gear before inspecting the globe - flavor text.
+    
     def office():
         print("\nThe right door leads into a small home office. Strangely, the desk lamp is on despite the fact that the house does not have power connected to it.")
         print("A large globe stand sits next to the desk supported by three legs. It looks like the kind to have a hidden compartment within.")
@@ -299,10 +322,22 @@ class options:
                 print("Shrugging, you turn back to the room.")
                 options.office_2()
             
-            elif items.old_gear in options.inventory:
+            elif items.old_gear in options.inventory and options.investigated_globe:
                 print("\nYou fish the old gear out of your pocket and place it firmly in the hidden compartment of the globe.")
                 print("Without any futher action on your part, the gears inexplicably move on their own.")
                 print("As you watch the gears seamlessly move together, you hear a loud thunk as something large slides into place.")
+                options.inventory.remove(items.old_gear)
+                options.used_old_gear = True
+                options.bolts += 1
+                print("You turn back to the room.")
+                options.office_2()
+
+            elif items.old_gear in options.inventory and options.investigated_globe == False:
+                print("\nYou open the globe, having correctly assumed there was a hidden compartment within.")
+                print("Inside, there is an intricate assortment of gears arranged into a strange contraption within the globe.")
+                print("You notice a missing gear, however. You take out the gear you found in the attic and compare it to the empty space.")
+                print("It fits like a glove. You firmly attach it to the mass of gears and immediately, the contraption begins to move.")
+                print("Somewhere in the house, you hear a loud thunk that sounds like something large sliding into place.")
                 options.inventory.remove(items.old_gear)
                 options.used_old_gear = True
                 options.bolts += 1
@@ -315,6 +350,7 @@ class options:
                 print("You give the contraption an experimental tug, but it is firmly attached to the walls of the globe.")
                 print("You look closer and notice that there appears to be a gear missing. Nothing will move without that gear.")
                 print("You turn back to the room.")
+                options.investigated_globe = True
                 options.office_2()
 
         elif choice.lower() == "c":
@@ -326,7 +362,7 @@ class options:
             options.office_2()
 
     
-    #Fix to account for looking at the box with the key in your inventory without having looked at the box previously.
+
     def desk():
         if options.used_pen:
             print("\nYou look at the box with the key sticking out of it.")
@@ -358,6 +394,7 @@ class options:
                     print("\nYou examine the box closely. It appears to have a keyhole in the front and is lined with gold trim around the lid of the box.")
                     print("The box is currently locked and cannot be opened.")
                     print("You turn back to the room.")
+                    options.investigated_box = True
                     options.office_2()
         
             else:
@@ -383,28 +420,34 @@ class options:
             options.pen()
             
     def box():
-        choice = input("\nDo you want to use the pen key on the box? Y/N: ")
+        if options.investigated_box:
+            choice = input("\nDo you want to use the pen key on the box? Y/N: ")
             
-        if choice.lower() == "y":
-            print("\nYou insert the pen key into the keyhole on the crane box and give it a twist.")
-            print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
-            print("Somewhere in the house, you hear a loud thud, then silence.")
-            options.inventory.remove(items.pen)
-            options.used_pen = True
-            options.bolts += 1
-            print("You turn back to the room.")
-            options.office_2()
+            if choice.lower() == "y":
+                print("\nYou insert the pen key into the keyhole on the crane box and give it a twist.")
+                print("The lid of the box pops open. Inside, there is only a single red button. You push it.")
+                print("Somewhere in the house, you hear a loud thud, then silence.")
+                options.inventory.remove(items.pen)
+                options.used_pen = True
+                options.bolts += 1
+                print("You turn back to the room.")
+                options.office_2()
            
-        elif choice.lower() == "n":
-            print("\nYou leave the box alone and turn back to the room.")
-            options.office_2()
+            elif choice.lower() == "n":
+                print("\nYou leave the box alone and turn back to the room.")
+                options.office_2()
 
+            else:
+                options.try_again()
+                options.box()
         else:
-            options.try_again()
+            print("\nYou hold the box up in your hands. Gold trim lines the border of the lid and there is a keyhole in front.")
+            print("The box is currently locked, but it looks like the pen key might fit in there.")
+            options.investigated_box = True
             options.box()
 
 
-    #Add flavor text to upper hallway.
+
     def hallway():
         print("\nYou head down the old dusty hallway and find the entrances to two rooms.")
         print("One is obviously the kitchen, the other appears to be the basement.")
@@ -557,9 +600,9 @@ class options:
             options.foyer_2()
 
 
-
+    
     def upper_hallway():
-        print("\nYou look around the upstairs hallway and immediately notice three doors.")
+        print("\nYou look around the dusty upstairs hallway, lit only by the light let in through the three doors connected to it.")
         print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another appears to lead to the attic.")
         options.upper_hallway_2()
 
@@ -584,7 +627,7 @@ class options:
             options.stairs("down")
         else:
             options.try_again()
-            options.upper_hallway()
+            options.upper_hallway_2()
     
 
 
@@ -703,7 +746,7 @@ class options:
                 options.wardrobe()
 
 
-    #Add more interactivity to the attic, allowing the player to choose to take the gear or not.
+ 
     def attic():
         print("\nYou head up the short staircase and poke your head into the dark gloom of the attic.")
         print("Surprisingly, the attic is quite empty save for an old safe that's leaning against one wall of the dusty room.")
@@ -711,18 +754,26 @@ class options:
         options.attic_2()
 
     def attic_2():
-        if options.used_attic_key or options.taken_old_gear:
+        if options.taken_old_gear:
             print("\nYou look into the empty safe, then around the attic.")
             print("There is nothing new, so you head back down the stairs.")
             options.upper_hallway_2()
+        
+        elif options.used_attic_key and options.taken_old_gear == False:
+            print("\nInside the open safe lies the old brass gear.")
+            options.gear()
 
-        elif items.attic_key in options.inventory:
+        elif items.attic_key in options.inventory and options.used_attic_key == False:
             print("\nYou notice that unique ellipse shape on the door of the safe from that key you picked up earlier in the foyer.")
             print("Curious, you bring the key out from your pocket and compare it to the design on the safe. They're the same.")
+
             choice = input("Would you like to use the key on the safe? Y/N: ")
+            
             if choice.lower() == "y":
                 print("It works. You slowly twist the key and hear a satisfying click.")
-                print("You creak open the old safe's door. Inside, you find a dusty old gear.")
+                options.used_attic_key = True
+                options.inventory.remove(items.attic_key)
+                print("You creak open the old safe's door. Inside, you find an old brass gear.")
                 options.gear()
 
             elif choice.lower() == "n":
@@ -734,14 +785,6 @@ class options:
                 options.try_again()
                 options.attic_2()
 
-                print("You add it to your backpack.")
-                options.used_attic_key = True
-                options.inventory.remove(items.attic_key)
-                options.inventory.append(items.old_gear)
-                options.taken_old_gear = True
-                print("You close the old safe and head out of the attic.")
-                options.upper_hallway_2()
-
         else:
             print("\nYou notice that there's a unique ellipse shape on the door.")
             print("It seems somewhat familiar...")
@@ -749,6 +792,18 @@ class options:
             print("You make your way back down the short staircase.")
             options.upper_hallway_2()
 
-    #Finish this
     def gear():
-        pass
+        options.investigated_safe = True
+        choice = input("\nDo you want to take the gear? Y/N: ")
+
+        if choice.lower() == "y":
+            print("\nYou pick up the old gear and stash it away.")
+            options.inventory.append(items.old_gear)
+            options.taken_old_gear = True
+            print("You close the old safe and head out of the attic.")
+            options.upper_hallway_2()
+        
+        elif choice.lower() == "n":
+            print("\nYou decide to leave the old gear alone and leave the room.")
+            options.upper_hallway_2()
+
