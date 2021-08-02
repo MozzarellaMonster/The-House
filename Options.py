@@ -47,6 +47,33 @@ class options:
             options.retry()
 
     def start():
+        options.inventory.clear()
+        
+        options.first_stairs = True
+        options.first_foyer = True
+
+        options.investigated_display_case = False
+        options.investigated_box = False
+        options.investigated_globe = False
+        options.investigated_safe = False
+
+        options.taken_attic_key = False
+        options.used_attic_key = False
+
+        options.taken_silver_dagger = False
+        options.used_silver_dagger = False
+
+        options.taken_old_gear = False
+        options.used_old_gear = False
+
+        options.taken_pen = False
+        options.used_pen = False
+
+        options.taken_flashlight = False
+        options.used_wardrobe_switch = False
+        
+        options.bolts = 0
+        
         print("_________          _______             _______           _______  _______ ")
         print("\__   __/|\     /|(  ____ \  |\     /|(  ___  )|\     /|(  ____ \(  ____ \"")
         print("   ) (   | )   ( || (    \/  | )   ( || (   ) || )   ( || (    \/| (    \/")
