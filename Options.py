@@ -10,6 +10,7 @@ class options:
     investigated_box = False
     investigated_globe = False
     investigated_safe = False
+    investigated_entryway_key = False
 
     taken_attic_key = False
     used_attic_key = False
@@ -27,6 +28,9 @@ class options:
     used_wardrobe_switch = False
         
     bolts = 0
+
+    def calc_used_bolts():
+        return (4 - options.bolts)
 
     def try_again():
         print("\nSorry, that is not a valid option. Please try again.\n")
@@ -56,6 +60,7 @@ class options:
         options.investigated_box = False
         options.investigated_globe = False
         options.investigated_safe = False
+        options.investigated_entryway_key = False
 
         options.taken_attic_key = False
         options.used_attic_key = False
@@ -117,15 +122,13 @@ class options:
 
 
     def entryway():
-        print("\nA dimly lit entryway greets you, sunlight managing to make it in through")
-        print("the caked-on grime on the large stained glass windows above the front door.")
+        print("\nA dimly lit entryway greets you, sunlight managing to make it in through the caked-on grime coating the large stained glass windows above the front door.")
         print("There's an expensive-looking rug running along the floor and a surprising lack of vandalism, despite the door not being locked.")
-        print("There is a small table on one side and a painting on the other.")
-        print("There is also one door leading further into the house.")
+        print("There is a small table on one side, a painting on the other, and a door straight ahead leading further into the house.")
         options.entryway_2()
 
     def entryway_2():
-        print("\nWhat would you like to do?:")
+        print("\nWhat would you like to do?")
         print("A. Investigate the table")
         print("B. Investigate the painting")
         print("C. Go through the door")
@@ -140,6 +143,7 @@ class options:
         elif choice.lower() == "a":
             print("\nYou decide to investigate the table and notice it has only one drawer. You open it.")
             print("Inside, you find a single key with a decorative ellipse on it.")
+            options.investigated_entryway_key = True
             options.entryway_key()
             
         elif choice.lower() == "b":
@@ -410,7 +414,7 @@ class options:
             
             elif choice.lower() == "a":
                 print("\nYou look at the pen. It is made of an expensive mahogany with gold trim. You notice an intricate carving of a feather on it.")
-                print("You twist the pen and the teeth of a skeleton key pokes out where the ballpoint should be.")
+                print("You twist the pen and the teeth of a skeleton key poke out where the ballpoint should be.")
                 options.pen()
                 
             elif choice.lower() == "b":
@@ -598,7 +602,10 @@ class options:
             print("You shine the light around, illuminating the dark, dusty corners of the creepy basement.")
             print("You come to rest the beam on one particuler outcropping of battered concrete on the floor of the basement.")
             print("You slowly approach the slab and note its resemblance to a large vault door.")
-            print("You examine it closely and notice there are " + (4 - options.bolts) + " large metal bolts keeping the slab in place.")
+            if options.calc_used_bolts() <= 1:
+                print("You examine it closely and notice there is " + str(options.calc_used_bolts()) + " large metal bolt keeping the slab in place.")
+            else:
+                print("You examine it closely and notice there are " + str(options.calc_used_bolts()) + " large metal bolts keeping the slab in place.")
             print("With nothing else of interest in the basement, you decide to leave.")
             options.hallway_2()
             
@@ -629,8 +636,8 @@ class options:
 
     
     def upper_hallway():
-        print("\nYou look around the dusty upstairs hallway, lit only by the light let in through the three doors connected to it.")
-        print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another appears to lead to the attic.")
+        print("\nYou look around the dusty upstairs hallway, lit only by the light let in through two of the three doors connected to it.")
+        print("One seems to lead to an upstairs bathroom, another leads to a bedroom, and yet another opens into a short staircase that could only lead to an attic.")
         options.upper_hallway_2()
 
     def upper_hallway_2():
@@ -775,7 +782,7 @@ class options:
 
  
     def attic():
-        print("\nYou head up the short staircase and poke your head into the dark gloom of the attic.")
+        print("\nYou head up the short staircase and poke your head into the gloom of the attic.")
         print("Surprisingly, the attic is quite empty save for an old safe that's leaning against one wall of the dusty room.")
         print("Seeing no other option, you head up to the old safe.")
         options.attic_2()
@@ -792,12 +799,12 @@ class options:
 
         elif items.attic_key in options.inventory and options.used_attic_key == False:
             print("\nYou notice that unique ellipse shape on the door of the safe from that key you picked up earlier in the foyer.")
-            print("Curious, you bring the key out from your pocket and compare it to the design on the safe. They're the same.")
+            print("You bring out the key and compare the two designs. They match.")
 
             choice = input("Would you like to use the key on the safe? Y/N: ")
             
             if choice.lower() == "y":
-                print("It works. You slowly twist the key and hear a satisfying click.")
+                print("It works. You twist the key and hear a satisfying click.")
                 options.used_attic_key = True
                 options.inventory.remove(items.attic_key)
                 print("You creak open the old safe's door. Inside, you find an old brass gear.")
@@ -805,8 +812,8 @@ class options:
 
             elif choice.lower() == "n":
                 print("\nYou decide against trying the key on the safe.")
-                print("You turn back to the room.")
-                options.attic_2()
+                print("You turn around and leave the room.")
+                options.upper_hallway_2()
 
             else:
                 options.try_again()
@@ -814,7 +821,6 @@ class options:
 
         else:
             print("\nYou notice that there's a unique ellipse shape on the door.")
-            print("It seems somewhat familiar...")
             print("Unfortunately, you cannot do any more with the safe at this time.")
             print("You make your way back down the short staircase.")
             options.upper_hallway_2()
