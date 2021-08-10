@@ -12,6 +12,10 @@ class options:
     investigated_safe = False
     investigated_entryway_key = False
 
+    chosen_fireplace = False
+    chosen_fridge = False
+    chosen_mirror = False
+
     taken_attic_key = False
     used_attic_key = False
 
@@ -61,6 +65,10 @@ class options:
         options.investigated_globe = False
         options.investigated_safe = False
         options.investigated_entryway_key = False
+
+        options.chosen_fireplace = False
+        options.chosen_fridge = False
+        options.chosen_mirror = False
 
         options.taken_attic_key = False
         options.used_attic_key = False
@@ -228,10 +236,11 @@ class options:
     
     def living_room():
         print("\nThe left door leads to a living room. Dust coats the antique furniture and the faint smell of old books hangs in the air.")
-        print("There are several things about this room that intrigue you.")
-        print("One of them is the large bookshelf directly across from you covering most of the wall to the left of the fireplace.")
-        print("Another is the large, intricately decorated fireplace against the wall.")
-        print("The last thing of note is the display case underneath the window.")
+        print("You look about the room.")
+        print("A large bookshelf stands directly across from you, covering most of the wall.")
+        print("A large, intricately decorated fireplace lies inset into the wall to the right of the bookshelf.")
+        print("On the left side of the room a dirty window encrusted with grime lets in just enough light to see by.")
+        print("Just below the window lies a glass display case with a wooden frame.")
         options.living_room_2()
 
     def living_room_2():
@@ -243,38 +252,14 @@ class options:
         choice = input()
 
         if choice.lower() == "a":
-            print("\nYou go to the bookshelf and look over the old tomes on the shelf.")
+            print("\nYou go to the bookshelf and look over the old tomes.")
             print("Aside from noticing the majority of them are mystery and thrillers, nothing really stands out about them.")
             print("You give some of them an experimental tug, expecting a cliche hidden room to open, but nothing happens.")
             print("You shrug and turn back to the room.")
             options.living_room_2()
             
         elif choice.lower() == "b":
-            print("\nYou go up to the fireplace and admire the intricate carvings of grapevines on it.")
-            print("There seems to be one cluster of grapes that stands out from the rest.")
-            print("Specifically, one particular grape.")
-            print("You graze your hand over it and notice that it gently gives under the pressure of your finger.")
-            print("It's a button!")
-            push = input("\nWill you push the button, Y/N?: ")
-
-            if push.lower() == "y":
-                print("\nYou push the button. Suddenly, a cast iron claws grabs your hand, its grip like a vice.")
-                print("You struggle, helplessly trying to pry the claw off your nearly broken hand.")
-                print("You then feel a pulling sensation. And you realize the claw is dragging you into the fireplace.")
-                print("You pull even harder and try your hardest to relieve yourself of the iron claw.")
-                print("Suddenly, a cast iron gate pops up and barricades you inside the fireplace.")
-                print("You pull hard on your hand as you hear the gas being pumped in.")
-                print("Your life flashes before your eyes as the world around you is engulfed in flames.")
-                print("No one can hear your screams over the roar of the fire.")
-                print("\nGAME OVER: Ending 2: Cremation")
-                options.retry()
-                
-            elif push.lower() == "n":
-                print("\nYou decide not to push the button.")
-                print("Strangely, you let out a breath you didn't realize you were holding.")
-                print("You don't know how, but you just know you made the right decision.")
-                print("You turn back to the room.")
-                options.living_room_2()
+            options.fireplace()
 
         elif choice.lower() == "c":
             if items.silver_dagger in options.inventory and options.investigated_display_case:
@@ -321,6 +306,43 @@ class options:
         else:
             options.try_again()
             options.living_room_2()
+
+    def fireplace():
+        if options.chosen_fireplace:
+                print("You look towards the fireplace and wonder what would have happened if you'd pushed the button.")
+                print("You suddenly feel very hot and involuntarily shake your head, as if to deny thinking about it.")
+                print("You wipe away a small bead of sweat and turn back to the room.")
+                options.living_room_2()
+        else:
+            print("\nYou go up to the fireplace and admire the intricate carvings of grapevines on it.")
+            print("There seems to be one cluster of grapes that stands out from the rest.")
+            print("Specifically, one particular grape.")
+            print("You graze your hand over it and notice that it gently gives under the pressure of your finger.")
+            print("It's a button!")
+            push = input("\nWill you push the button, Y/N?: ")
+
+            if push.lower() == "y":
+                print("\nYou push the button. Suddenly, a cast iron claw grabs your hand, its grip like a vice.")
+                print("You struggle, helplessly trying to pry the claw off your nearly broken hand.")
+                print("Despite your efforts, the claw drags you into the fireplace.")
+                print("Suddenly, a cast iron gate pops up and barricades you inside the hearth.")
+                print("You continue to struggle against the grip of the iron claw when you hear gas being pumped in.")
+                print("Your life flashes before your eyes as the world around you is engulfed in flames.")
+                print("No one can hear your screams over the roar of the fire.")
+                print("\nGAME OVER: Ending 2: Cremation")
+                options.retry()
+                
+            elif push.lower() == "n":
+                print("\nYou decide not to push the button.")
+                print("Strangely, you let out a breath you didn't realize you were holding.")
+                print("You don't know how, but you just know you made the right decision.")
+                print("You turn back to the room.")
+                options.chosen_fireplace = True
+                options.living_room_2()
+                
+            else:
+                options.try_again()
+                options.fireplace()
         
 
     
