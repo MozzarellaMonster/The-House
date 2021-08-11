@@ -606,7 +606,7 @@ class options:
             options.kitchen_cabinet()
 
         elif choice.lower() == "b" and options.chosen_fridge:
-            print("\nYou glance at the fridge but quickly avert your gaze and look back towards the rest of the room.")
+            print("\nYou glance towards the fridge but quickly avert your gaze and look back towards the rest of the room.")
             options.kitchen_2()
 
         elif choice.lower() == "b":
@@ -656,7 +656,7 @@ class options:
             options.retry()
         
         elif choice.lower() == "n":
-            print("You turn away from the door, but are quickly overcome with a strong dizzy spell.")
+            print("\nYou turn away from the door, but are quickly overcome with a strong dizzy spell.")
             print("Your body suddenly feels incredibly itchy. But as soon as you make a move to scratch, the sensation disappears.")
             print("The dizzy spell also quickly passes and you're left confused.")
             print("You look back at the fridge, but the sight of the mold lining the edges of the door gives you a full-body shudder.")
@@ -944,7 +944,7 @@ class options:
             choice = input("Would you like to use the key on the safe? Y/N: ")
             
             if choice.lower() == "y":
-                print("It fits. You twist the key and hear a satisfying click.")
+                print("\nIt fits. You twist the key and hear a satisfying click.")
                 options.used_attic_key = True
                 options.inventory.remove(items.attic_key)
                 print("You creak open the old safe's door. Inside, you find an old brass gear.")
