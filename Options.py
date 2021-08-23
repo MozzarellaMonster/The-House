@@ -48,7 +48,7 @@ class options:
         return options.used_old_gear and options.used_pen and options.used_silver_dagger and options.used_wardrobe_switch
 
     def show_inventory():
-        inv = " ".join(item["Item name"] for item in options.inventory)
+        inv = ", ".join(item["Item name"] for item in options.inventory)
         print("Inventory: " + inv + "\n")
 
     def retry():
