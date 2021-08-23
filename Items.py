@@ -13,7 +13,7 @@ class items:
     }
 
     attic_key = {
-        "Item name": "Attic Key",
+        "Item name": "Ellipse Key",
         "Found in": "Foyer",
         "Used in": "Attic"
     }
