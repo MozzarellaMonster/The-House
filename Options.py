@@ -47,6 +47,10 @@ class options:
     def vault():
         return options.used_old_gear and options.used_pen and options.used_silver_dagger and options.used_wardrobe_switch
 
+    def show_inventory():
+        inv = " ".join(item["Item name"] for item in options.inventory)
+        print("Inventory: " + inv + "\n")
+
     def retry():
         print("\nWould you like to play again? Y/N: ")
         choice = input()
@@ -146,6 +150,8 @@ class options:
         options.entryway_2()
 
     def entryway_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Investigate the table")
         print("B. Investigate the painting")
@@ -215,6 +221,8 @@ class options:
             options.foyer_2()
 
     def foyer_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Go into the living room")
         print("B. Go into the hallway")
@@ -254,6 +262,8 @@ class options:
         options.living_room_2()
 
     def living_room_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Investigate the bookshelf")
         print("B. Investigate the fireplace")
@@ -371,6 +381,8 @@ class options:
         options.office_2()
 
     def office_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A: Investigate the desk")
         print("B: Investigate the globe stand")
@@ -554,6 +566,8 @@ class options:
         options.hallway_2()
     
     def hallway_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Go into the kitchen")
         print("B. Head down into the basement")
@@ -589,6 +603,8 @@ class options:
         options.kitchen_2()
 
     def kitchen_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Look into the cabinet")
         print("B. Investigate the refrigerator")
@@ -669,6 +685,8 @@ class options:
             options.fridge()
 
     def basement():
+        options.show_inventory()
+
         if items.flashlight in options.inventory and options.vault():
             print("\nHaving put different items back in their proper places or simply flicking a switch, you have unknowingly opened the basement vault.")
             print("The large slab of concrete is no longer held back by the large metal bolts. You lift the concrete slab away, straining with the effort.")
@@ -737,6 +755,8 @@ class options:
         options.upper_hallway_2()
 
     def upper_hallway_2():
+        options.show_inventory()
+        
         print("\nWhat would you like to do?")
         print("A. Go into the bathroom")
         print("B. Go into the bedroom")
@@ -831,6 +851,8 @@ class options:
         options.bedroom_2()
 
     def bedroom_2():
+        options.show_inventory()
+
         print("\nWhat would you like to do?")
         print("A. Look in the dresser")
         print("B. Look in the trunk")
@@ -928,6 +950,8 @@ class options:
         options.attic_2()
 
     def attic_2():
+        options.show_inventory()
+        
         if options.taken_old_gear:
             print("\nYou look into the empty safe, then around the attic.")
             print("There is nothing new, so you head back down the stairs.")
