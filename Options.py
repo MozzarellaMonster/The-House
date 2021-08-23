@@ -17,6 +17,8 @@ class options:
     investigated_bed = False
     investigated_bookshelf = False
 
+    bathroom_done = False
+
     chosen_fireplace = False
     chosen_fridge = False
     chosen_mirror = False
@@ -79,6 +81,8 @@ class options:
         options.investigated_attic = False
         options.investigated_bed = False
         options.investigated_bookshelf = False
+
+        options.bathroom_done = False
 
         options.chosen_fireplace = False
         options.chosen_fridge = False
@@ -782,9 +786,13 @@ class options:
 
 
     def bathroom():
-        if options.investigated_bathroom:
-            print("\nThere is nothing more to see in the bathroom.")
+        if options.bathroom_done:
+            print("\nThere is no reason to go back into the bathroom.")
             options.upper_hallway_2()
+        
+        elif options.investigated_bathroom:
+            print("\nThe bathroom looks the same, yet your gaze is drawn to the mirror.")
+            options.bathroom_mirror()
         
         else:
             print("\nYou choose to explore the bathroom.")
@@ -796,6 +804,7 @@ class options:
             print("Out of the corner of your eye, you notice something move in the mirror.")
             print("You quickly look back at the mirror, but don't see anything out of the ordinary.")
             print("Still, something's telling you to look closer...")
+            options.investigated_bathroom = True
             options.bathroom_mirror()
     
     def bathroom_mirror():
@@ -805,7 +814,7 @@ class options:
             print("The itch turns into a slight pain and the image of your maniacal visage flashes in your mind.")
             print("But as swiftly as it appears, it disappears. The slight pain vanishing completely.")
             print("You involuntarily shudder and leave the bathroom.")
-            options.investigated_bathroom = True
+            options.bathroom_done = True
             options.upper_hallway_2()
 
         else:
