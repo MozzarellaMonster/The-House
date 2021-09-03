@@ -51,7 +51,10 @@ class options:
 
     def show_inventory():
         inv = ", ".join(item["Item name"] for item in options.inventory)
-        print("Inventory: " + inv + "\n")
+        print("\n[Inventory: " + inv + "]\n")
+
+    def line():
+        print("==========================")
 
     def retry():
         print("\nWould you like to play again? Y/N: ")
@@ -154,6 +157,7 @@ class options:
         options.entryway_2()
 
     def entryway_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -225,6 +229,7 @@ class options:
             options.foyer_2()
 
     def foyer_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -266,6 +271,7 @@ class options:
         options.living_room_2()
 
     def living_room_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -385,6 +391,7 @@ class options:
         options.office_2()
 
     def office_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -570,6 +577,7 @@ class options:
         options.hallway_2()
     
     def hallway_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -607,6 +615,7 @@ class options:
         options.kitchen_2()
 
     def kitchen_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
@@ -689,6 +698,7 @@ class options:
             options.fridge()
 
     def basement():
+        options.line()
         options.show_inventory()
 
         if items.flashlight in options.inventory and options.vault():
@@ -759,6 +769,7 @@ class options:
         options.upper_hallway_2()
 
     def upper_hallway_2():
+        options.line()
         options.show_inventory()
         
         print("\nWhat would you like to do?")
@@ -786,6 +797,7 @@ class options:
 
 
     def bathroom():
+        options.line()
         if options.bathroom_done:
             print("\nThere is no reason to go back into the bathroom.")
             options.upper_hallway_2()
@@ -860,6 +872,7 @@ class options:
         options.bedroom_2()
 
     def bedroom_2():
+        options.line()
         options.show_inventory()
 
         print("\nWhat would you like to do?")
