@@ -9,7 +9,7 @@ class items:
     old_gear = {
         "Item name": "Old Gear",
         "Found in": "Attic",
-        "Used in": "Study"
+        "Used in": "Office"
     }
 
     attic_key = {
