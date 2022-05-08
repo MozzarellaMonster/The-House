@@ -55,18 +55,30 @@ class options:
 
     def line():
         print("==========================")
+        
+    def retry(func = None):
+        if func is None:
+            print("\nWould you like to play again? Y/N: ")
+            choice = input()
 
-    def retry():
-        print("\nWould you like to play again? Y/N: ")
-        choice = input()
-
-        if choice.lower() == "y":
-            options.start()
-        elif choice.lower() == "n":
-            exit()
+            if choice.lower() == "y":
+                options.start()
+            elif choice.lower() == "n":
+                exit()
+            else:
+                options.try_again()
+                options.retry()
         else:
-            options.try_again()
-            options.retry()
+            print("\nRetry from the last area? Y/N: ")
+            choice = input()
+
+            if choice.lower() == 'y':
+                func()
+            elif choice.lower() == 'n':
+                options.retry()
+            else:
+                options.try_again()
+                options.retry(func)
 
     def start():
         options.inventory.clear()
@@ -142,7 +154,7 @@ class options:
             print("\nYou turn around and head back to your car, head lowered in shame.")
             print("Guess the paper sent out the wrong person for the story, huh?")
             print("GAME OVER: Ending 1: Coward")
-            options.retry()
+            options.retry(options.porch)
 
         else:
             options.try_again()
@@ -368,7 +380,8 @@ class options:
                 print("Your life flashes before your eyes as the world around you is engulfed in flames.")
                 print("No one can hear your screams over the roar of the fire.")
                 print("\nGAME OVER: Ending 2: Cremation")
-                options.retry()
+                options.chosen_fireplace = True
+                options.retry(options.living_room_2)
                 
             elif push.lower() == "n":
                 print("\nYou decide not to push the button.")
@@ -682,7 +695,8 @@ class options:
             print("Mold soon covers your entire body and you find it hard to breathe as the spores fill your lungs.")
             print("You slowly lose sensation in your body as a cold numbness replaces the itch and the world fades to black.")
             print("GAME OVER: Ending 3: Rot")
-            options.retry()
+            options.chosen_fridge = True
+            options.retry(options.kitchen_2)
         
         elif choice.lower() == "n":
             print("\nYou turn away from the door, but are quickly overcome with a strong dizzy spell.")
@@ -721,7 +735,7 @@ class options:
             print("The trees look like those found in some jungle, and now that you're paying more attention, you hear several bizarre animal calls.")
             print("You look back down at the phone and pull up your compass app. It spins around uselessly. You put it back in your pocket.")
             print("You take a hesitant step forward, not knowing where you're going or what you're going to do. You travel further into the jungle...")
-            print("GAME OVER: Ending 5: Lost")
+            print("GAME OVER: Ending 5: Lost - TRUE ENDING")
             options.retry()
             
         
@@ -851,7 +865,8 @@ class options:
                 print("Darkness encroaches on the edges of your vision as you give one final gasp, your reflection's wicked laughter echoing off the walls.")
                 print("The world fades away as you drop to the floor.")
                 print("GAME OVER: Ending 4: Slit")
-                options.retry()
+                options.chosen_mirror = True
+                options.retry(options.bathroom)
         
             elif choice.lower() == "n":
                 print("\nYou shudder a bit at the creepy sensation, but decide not to look closer at the mirror.")
@@ -972,6 +987,7 @@ class options:
         options.attic_2()
 
     def attic_2():
+        options.line()
         options.show_inventory()
         
         if options.taken_old_gear:
