@@ -80,7 +80,7 @@ class options:
                 options.try_again()
                 options.retry(func)
 
-    def start():
+    def start(self):
         options.inventory.clear()
         
         options.first_stairs = True

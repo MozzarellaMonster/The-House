@@ -1,5 +1,7 @@
+from ssl import Options
 from Options import options
 
 class main:
     
-    options.start()
+    op = options()
+    op.start()
