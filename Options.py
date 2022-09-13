@@ -139,7 +139,7 @@ class options:
         print("Stories that give the impression there is more going on than meets the eye.")
 
         print("\nYou find yourself standing on the porch of the old house. You wonder how this house hasn't been demolished yet.")
-        print("You grip the ice-cold doorknob despite it being a warm, sunny summer afternoon. You pull your hand back, surprised.")
+        print("You grip the doorknob and are surprised to find it ice cold despite the warm, sunny summer afternoon. You pull your hand back and shudder.")
 
         options.porch()
 
