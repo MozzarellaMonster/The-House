@@ -59,7 +59,7 @@ class options:
     def retry(func = None):
         if func is None:
             print("\nWould you like to play again? Y/N: ")
-            choice = input()
+            choice = input("\n> ")
 
             if choice.lower() == "y":
                 options.start()
@@ -70,7 +70,7 @@ class options:
                 options.retry()
         else:
             print("\nRetry from the last area? Y/N: ")
-            choice = input()
+            choice = input("\n> ")
 
             if choice.lower() == 'y':
                 func()
@@ -177,7 +177,7 @@ class options:
         print("B. Investigate the painting")
         print("C. Go through the door")
         print("D. Leave the house")
-        choice = input()
+        choice = input("\n> ")
         
         if choice.lower() == "a" and options.taken_attic_key:
             print("\nYou open the drawer on the table.")
@@ -250,7 +250,7 @@ class options:
         print("C. Go into the office")
         print("D. Go up the stairs")
         print("E. Go back through the door")
-        choice = input()
+        choice = input("\n> ")
 
         if choice.lower() == "a":
             print("\nYou have chosen to go through the left door.")
@@ -291,7 +291,7 @@ class options:
         print("B. Investigate the fireplace")
         print("C. Investigate the display case")
         print("D. Leave the room")
-        choice = input()
+        choice = input("\n> ")
 
         if choice.lower() == "a" and options.investigated_bookshelf:
             print("\nYou walk up to the bookshelf and look over the various publications.")
@@ -412,7 +412,7 @@ class options:
         print("B: Investigate the globe stand")
         print("C: Investigate the desk lamp")
         print("D: Leave the room")
-        choice = input()
+        choice = input("\n> ")
         
         if choice.lower() == "a" and options.used_pen:
             print("\nYou look back at the desk and see only the unlocked box with the key sticking out of it.")
@@ -506,7 +506,7 @@ class options:
             print("\nWhat would you like to do?")
             print("A. Look at the pen")
             print("B. Look at the box")
-            choice = input()
+            choice = input("\n> ")
 
             if choice.lower() == "a" and options.taken_pen:
                 print("\nYou fish the pen out of your pocket and look at it.")
@@ -597,7 +597,7 @@ class options:
         print("A. Go into the kitchen")
         print("B. Head down into the basement")
         print("C. Go back into the foyer")
-        choice = input()
+        choice = input("\n> ")
 
         if choice.lower() == "a":
             print("\nYou head into the kitchen.")
@@ -635,7 +635,7 @@ class options:
         print("A. Look into the cabinet")
         print("B. Investigate the refrigerator")
         print("C. Go back into the hallway")
-        choice = input()
+        choice = input("\n> ")
 
         if choice.lower() == "a" and options.taken_silver_dagger:
             print("\nYou bend down and look into the broken cabinet.")
@@ -791,7 +791,7 @@ class options:
         print("B. Go into the bedroom")
         print("C. Go into the attic")
         print("D. Leave the hallway")
-        choice = input()
+        choice = input("\n> ")
         
         if choice.lower() == "a":
             options.bathroom()
@@ -896,7 +896,7 @@ class options:
         print("C. Look in the wardrobe")
         print("D. Look under the bed")
         print("E. Leave the bedroom")
-        choice = input()
+        choice = input("\n> ")
 
         if choice.lower() == "a":
             print("\nYou go up to the dresser and open the drawers one by one. You don't really find much, except for some mothballs.")
