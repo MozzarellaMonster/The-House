@@ -64,6 +64,7 @@ class options:
             if choice.lower() == "y":
                 options.start()
             elif choice.lower() == "n":
+                print("Thank you for playing The House!\n")
                 exit()
             else:
                 options.try_again()
